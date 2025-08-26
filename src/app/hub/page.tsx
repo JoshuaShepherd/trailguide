@@ -1,0 +1,207 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { getKitCategories } from '@/kits';
+import Link from 'next/link';
+import { 
+  TrendingUp, 
+  Users, 
+  Target, 
+  Settings,
+  ArrowRight,
+  Zap
+} from 'lucide-react';
+
+export default function TrailHubPage() {
+  const kitCategories = getKitCategories();
+
+  const categoryIcons = {
+    'Fundraising & Revenue': TrendingUp,
+    'Programs & Impact': Target,
+    'Operations & Management': Settings,
+    'Strategy & Partnerships': Users,
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-evergreen-600 rounded-lg flex items-center justify-center">
+                <Zap className="h-4 w-4 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">TrailHub</h1>
+                <p className="text-sm text-gray-600">AI-powered nonprofit operations</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary">15 TrailKits Available</Badge>
+              <Button asChild>
+                <Link href="/trailmap">Assessment</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Choose Your TrailKit
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Each TrailKit is designed for specific nonprofit functions, providing AI-powered insights, 
+            automated workflows, and best practices tailored to your organization&apos;s stage and needs.
+          </p>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-evergreen-600 mb-1">15</div>
+              <div className="text-sm text-gray-600">TrailKits</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-evergreen-600 mb-1">5</div>
+              <div className="text-sm text-gray-600">Maturity Stages</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-evergreen-600 mb-1">60+</div>
+              <div className="text-sm text-gray-600">Quick Actions</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-evergreen-600 mb-1">AI</div>
+              <div className="text-sm text-gray-600">Powered</div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Kit Categories */}
+        <div className="space-y-12">
+          {Object.entries(kitCategories).map(([category, kits]) => {
+            const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
+            
+            return (
+              <section key={category}>
+                <div className="flex items-center gap-3 mb-6">
+                  <IconComponent className="h-6 w-6 text-evergreen-600" />
+                  <h3 className="text-xl font-semibold text-gray-900">{category}</h3>
+                  <div className="flex-1 h-px bg-gray-200" />
+                  <Badge variant="secondary">{kits.length} kits</Badge>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {kits.map((kit) => (
+                    <Card 
+                      key={kit.slug} 
+                      className="group hover:shadow-lg transition-all duration-200 cursor-pointer border-l-4"
+                      style={{ borderLeftColor: `var(--color-${kit.colorAccent}-500)` }}
+                    >
+                      <CardHeader className="pb-3">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg group-hover:text-evergreen-600 transition-colors">
+                              {kit.name}
+                            </CardTitle>
+                            <Badge 
+                              className="mt-2"
+                              variant={
+                                kit.stage === 'Leadership' ? 'default' :
+                                kit.stage === 'Optimization' ? 'secondary' :
+                                'outline'
+                              }
+                            >
+                              {kit.stage}
+                            </Badge>
+                          </div>
+                          <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-evergreen-600 transition-colors" />
+                        </div>
+                      </CardHeader>
+                      
+                      <CardContent className="pt-0">
+                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                          {kit.description}
+                        </p>
+
+                        <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                          <span>{kit.kpis.length} KPIs</span>
+                          <span>{kit.quickActions.length} Actions</span>
+                          <span>{kit.guardrails?.length || 0} Guardrails</span>
+                        </div>
+
+                        <Link href={`/hub/${kit.slug}`}>
+                          <Button className="w-full group-hover:bg-evergreen-600 transition-colors">
+                            Launch {kit.name}
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+
+        {/* Getting Started */}
+        <section className="mt-16 p-8 bg-evergreen-50 rounded-xl">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              New to TrailHub?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Start with our TrailMap assessment to understand your organization&apos;s current stage 
+              and get personalized kit recommendations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link href="/trailmap">Take Assessment</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/learn">Browse Learning Resources</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 mt-16">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-gray-500">
+              © 2024 TrailGuide. All rights reserved.
+            </div>
+            <div className="flex items-center gap-6 text-sm">
+              <Link href="/learn" className="text-gray-600 hover:text-evergreen-600">
+                Learning Resources
+              </Link>
+              <Link href="/about" className="text-gray-600 hover:text-evergreen-600">
+                About
+              </Link>
+              <Link href="/blog" className="text-gray-600 hover:text-evergreen-600">
+                Blog
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export const metadata = {
+  title: 'TrailHub - AI-Powered Nonprofit Operations',
+  description: 'Access 15 specialized TrailKits designed to transform your nonprofit operations with AI-powered insights, automated workflows, and best practices.',
+};

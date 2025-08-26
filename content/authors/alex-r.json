@@ -1,0 +1,12 @@
+{
+  "name": "Alex Rodriguez",
+  "handle": "alex-r",
+  "avatar": "/images/authors/alex-rodriguez.jpg",
+  "role": "Programs & Impact Director",
+  "bio": "Alex leads program development and impact measurement for nonprofits implementing AI solutions. With 12 years in the sector and a background in data science, Alex specializes in making complex technology accessible and mission-focused.",
+  "social": {
+    "linkedin": "https://linkedin.com/in/alex-rodriguez-nonprofit",
+    "twitter": "https://twitter.com/alexr_impact",
+    "website": "https://alexrodriguez.nonprofit"
+  }
+}
