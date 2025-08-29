@@ -3,9 +3,9 @@ import { getPostsByTag, getAllTags } from '@/lib/blog'
 import TagArchive from '@/components/blog/tag-archive'
 
 interface TagPageProps {
-  params: {
+  params: Promise<{
     tag: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: TagPageProps) {
-  const tag = decodeURIComponent(params.tag).replace(/-/g, ' ')
+  const resolvedParams = await params;
+  const tag = decodeURIComponent(resolvedParams.tag).replace(/-/g, ' ')
   const posts = await getPostsByTag(tag)
   
   if (posts.length === 0) {
@@ -36,7 +37,8 @@ export async function generateMetadata({ params }: TagPageProps) {
 }
 
 export default async function TagPage({ params }: TagPageProps) {
-  const tag = decodeURIComponent(params.tag).replace(/-/g, ' ')
+  const resolvedParams = await params;
+  const tag = decodeURIComponent(resolvedParams.tag).replace(/-/g, ' ')
   const posts = await getPostsByTag(tag)
   const allTags = await getAllTags()
 

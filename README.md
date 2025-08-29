@@ -9,6 +9,48 @@ TrailGuide is a comprehensive nonprofit management platform that combines AI-pow
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.0-blueviolet.svg)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org)
 
+## 🚀 **Quick Start**
+
+### Prerequisites
+- Node.js 18+ (LTS recommended)
+- npm (comes with Node.js)
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/JoshuaShepherd/trailguide.git
+cd trailguide
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.local.example .env.local
+# Edit .env.local with your OpenAI API key for full functionality
+```
+
+### Development
+```bash
+# Start development server
+npm run dev
+
+# Visit http://localhost:3000
+```
+
+### Build & Deploy
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+```
+
+### Environment Variables
+- `OPENAI_API_KEY`: Required for AI features (voice assessment, kit assistants)
+- `SUPABASE_URL` & `SUPABASE_SERVICE_ROLE_KEY`: Optional for data persistence
+- See `.env.local.example` for all variables
+
 ## 🚀 **Key Features**
 
 ### 🎯 **TrailHub: 15 Specialized TrailKits**

@@ -9,7 +9,7 @@ import { FinalCTASection } from '@/components/sections/FinalCTASection';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <HeroSection />
       <TrailMapSection />
       <TrailHikesSection />
@@ -18,6 +18,6 @@ export default function Home() {
       <TrustEthicsSection />
       <NewsletterSection />
       <FinalCTASection />
-    </main>
+    </>
   );
 }

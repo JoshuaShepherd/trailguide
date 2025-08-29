@@ -46,7 +46,7 @@ export function FinalCTASection() {
               size="lg"
               className="bg-trailguide-evergreen hover:bg-trailguide-evergreen/90 text-white px-8 py-4 text-lg"
             >
-              <Link href="/assessment" className="flex items-center">
+              <Link href="/trailmap" className="flex items-center">
                 Start Your Assessment
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -62,8 +62,30 @@ export function FinalCTASection() {
             </Button>
           </div>
 
+          {/* Expert Publisher Demo Promotion */}
+          <div className="mt-16 p-6 bg-blue-50 border border-blue-200 rounded-xl">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                🚀 New: Expert Publisher Platform Demo
+              </h3>
+              <p className="text-blue-800 mb-4">
+                See our complete thought leadership platform in action. Live demo with AI agents, 
+                content systems, analytics, and professional templates.
+              </p>
+              <Button 
+                asChild 
+                className="bg-blue-600 hover:bg-blue-700 text-white"
+              >
+                <Link href="/expert-publisher" className="flex items-center">
+                  Explore Demo Platform
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+
           {/* Additional Info */}
-          <p className="text-sm text-trailguide-slate max-w-xl mx-auto">
+          <p className="text-sm text-trailguide-slate max-w-xl mx-auto mt-8">
             Questions? We&rsquo;re here to help. Our team includes nonprofit veterans and AI experts 
             who understand your challenges and opportunities.
           </p>

@@ -3,9 +3,9 @@ import { getAuthorByHandle, getPostsByAuthor } from '@/lib/blog'
 import AuthorProfile from '@/components/blog/author-profile'
 
 interface AuthorPageProps {
-  params: {
+  params: Promise<{
     handle: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: AuthorPageProps) {
-  const author = getAuthorByHandle(params.handle)
+  const resolvedParams = await params;
+  const author = getAuthorByHandle(resolvedParams.handle)
   
   if (!author) {
     return {
@@ -37,13 +38,14 @@ export async function generateMetadata({ params }: AuthorPageProps) {
 }
 
 export default async function AuthorPage({ params }: AuthorPageProps) {
-  const author = getAuthorByHandle(params.handle)
+  const resolvedParams = await params;
+  const author = getAuthorByHandle(resolvedParams.handle)
   
   if (!author) {
     notFound()
   }
 
-  const posts = await getPostsByAuthor(params.handle)
+  const posts = await getPostsByAuthor(resolvedParams.handle)
 
   return <AuthorProfile author={author} posts={posts} />
 }

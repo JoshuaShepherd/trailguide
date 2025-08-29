@@ -1,54 +1,121 @@
-Always leave the items above the hashmarks.
+# TrailGuide Copilot Instructions
 
-Follow the instructions below without deleting, altering, or breaking anything without specific instruction to do so.
+## Core Architecture
 
-Begin all instructions by converting the prompts to a checklist you can follow, expertly prompted from the perspective of a developer and expert prompt engineer.
+TrailGuide is a Next.js 15 nonprofit platform built around **TrailKits** - 15 specialized modules (fundraising, grants, HR, etc.) that share a unified config-driven architecture.
 
-######
+### Kit System (Critical Pattern)
+- **Registry**: `src/kits/index.ts` exports `Kits` object and `getKitBySlug()` function
+- **Configs**: Each kit defined in `src/kits/*.ts` following `KitConfig` type from `src/types/kit.ts`  
+- **Shell**: `src/components/kit-shell.tsx` renders any kit universally via props
+- **Routing**: `/hub/[kit]` uses `generateStaticParams()` for all 15 kits
 
-Execute the following prompt but do so in the following way.
+```typescript
+// Adding new kit: create config, export, add to registry
+export const myKit: KitConfig = {
+  slug: 'my-kit',
+  stage: 'Adoption', 
+  kpis: [...],
+  quickActions: [...]
+}
+```
 
-Instead of this being the website of a particular thought leader such as the ones in my audience, you will essentially be creating a full thought leader website example template that simultaneously teaches through its own form and copy what a thought leader website should be according to best practices.
+### Next.js App Router Patterns
+- **Async Params**: All dynamic routes use `params: Promise<{}>` - always `await params` first
+- **Static Generation**: Use `generateStaticParams()` for SEO and performance
+- **Error Handling**: Use `notFound()` from `next/navigation` for missing resources
 
-That is, you will make it clear what this is, and you will make it clearly a template for showcasing the work we do for thought leaders.
+```typescript
+// Standard dynamic route pattern
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-"""
-MASTER PROMPT — Build Full-Stack Expert Publisher Example
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+  const resource = getResource(slug);
+  if (!resource) notFound();
+  return <Component resource={resource} />;
+}
+```
 
-We are creating a fully functional, live example of our Expert Publisher platform—a demo site that shows prospective users exactly what their full digital presence, content engine, and monetization stack will look like when they launch with us.
+## Design System & Styling
 
-Purpose
+### TrailGuide Brand Colors (Always Use These)
+```css
+/* Use these instead of generic Tailwind colors */
+bg-trailguide-background   /* #F7F9FA */
+text-trailguide-evergreen  /* #3A5A40 */ 
+text-trailguide-bronze     /* #C89B3C */
+text-trailguide-slate      /* #64748b */
+border-trailguide-border   /* #e2e8f0 */
+```
 
-This isn’t just a marketing site—it’s an interactive showroom:
-	•	Demonstrates the end-to-end capabilities of our platform.
-	•	Shows how each feature benefits the user’s goals (building an audience, monetizing, scaling).
-	•	Educates the user by example: the site itself is a model of best practices.
+### Component Architecture
+- **shadcn/ui base**: All UI components extend Radix primitives in `src/components/ui/`
+- **Layout components**: Header, Footer, accessibility helpers in `src/components/layout/`
+- **Feature modules**: Board, blog, etc. in dedicated folders
+- **Utilities**: `cn()` from `src/lib/utils.ts` for conditional classes
 
-This build must feel real—with seeded content, working flows, and integrated AI-driven tooling.
+## Development Workflows
 
-⸻
+### Build Commands
+```bash
+npm run dev    # Turbopack dev server (faster than webpack)
+npm run build  # Turbopack production build
+npm run lint   # ESLint with strict TypeScript rules
+```
 
-Scope
+### Kit Development
+1. Create config in `src/kits/[name].ts` matching `KitConfig` interface
+2. Export from appropriate `additional[n].ts` grouping file  
+3. Add to `Kits` registry in `src/kits/index.ts`
+4. Kit auto-appears at `/hub/[kit]` route via shell component
 
-The platform includes everything from A–M in our breakdown:
+### QuickAction Integration
+Kit actions support two handlers:
+- `handler: 'server'` → calls `endpoint` URL for server logic
+- `handler: 'agent'` → triggers AI with `promptId` for LLM processing
 
-⸻
+```typescript
+quickActions: [
+  { 
+    id: 'server-action',
+    handler: 'server', 
+    endpoint: '/api/kits/fundraising/analyze' 
+  },
+  { 
+    id: 'ai-action', 
+    handler: 'agent', 
+    promptId: 'donor_appeal_v1' 
+  }
+]
+```
 
-A) Site Map (Public-Facing Pages)
-	•	Home: Hero, value proposition, highlights of content/products, clear CTAs (subscribe, become a member, hire).
-	•	About: Story, mission, credibility markers, human-first photos.
-	•	Articles / Blog: Index + full article pages, supporting public and paywalled content.
-	•	Podcast / Video: Index + individual episode pages with player, transcripts, and SEO-ready metadata.
-	•	Resources / Library: Lead magnets, downloadable guides (gated via email capture).
-	•	Products / Offers:
-	•	Membership: Benefits, pricing, testimonials.
-	•	Courses/Cohorts: Catalog, detail pages with curriculum previews and CTA to purchase/enroll.
-	•	Workshops/Events: List, detail pages, ticketing integration.
-	•	Books/Toolkits: Landing pages for specific works.
-	•	Speaking/Consulting: Topics, testimonials, booking form (integrated with Calendly).
-	•	Newsletter: Standalone opt-in page with sample issue archive.
-	•	Case Studies/Results: Outcomes achieved using this platform.
-	•	Contact: General inquiries, press/media kit.
-	•	Ethics: Human-first, transparent AI usage, privacy assurances.
-	•	Legal: Privacy policy, terms, cookie policy.
-"""
+## Project-Specific Conventions
+
+- **Imports**: Use `@/` alias for `src/` directory
+- **Types**: Comprehensive TypeScript definitions in `src/types/`
+- **Data**: Static content and configs in `src/data/`
+- **Icons**: Import specific icons from `lucide-react` (500+ available)
+- **Accessibility**: Built-in `SkipLink` and `FocusManager` in root layout
+
+### AI Agent Development
+Follow vendor patterns from `vendor/` directories only. Never create custom implementations outside vendor specifications. Use Zod validation at all boundaries.
+
+Focus on the TrailKit architecture - it's the core innovation enabling extensible nonprofit management through unified configuration patterns.
+
+## 🧰 Vendor SDKs (use only these patterns)
+
+All agent code must follow patterns and APIs found in our vendored directories (do not import from the internet, do not invent new APIs):
+
+- `vendor/openai-agents-js-main/` – Core Agents framework & examples
+- `vendor/openai-realtime-agents-main/` – Realtime agents UI (Next.js)
+- `vendor/openai-realtime-api-beta-main/` – Realtime WS client
+
+When building agents or tools:
+
+1. Read the README + examples in these dirs.
+2. Reuse provided utilities, types, and tool patterns.
+3. Provide Zod validators at tool boundaries.
+4. Never invent new transport layers or unsupported APIs.

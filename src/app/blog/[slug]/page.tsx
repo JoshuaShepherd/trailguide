@@ -3,9 +3,9 @@ import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import BlogPost from '@/components/blog/blog-post'
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PostPageProps) {
-  const post = getPostBySlug(params.slug)
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.slug)
   
   if (!post) {
     return {
@@ -53,8 +54,9 @@ export async function generateMetadata({ params }: PostPageProps) {
   }
 }
 
-export default function PostPage({ params }: PostPageProps) {
-  const post = getPostBySlug(params.slug)
+export default async function PostPage({ params }: PostPageProps) {
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.slug)
   
   if (!post || (post.draft && process.env.NODE_ENV !== 'development')) {
     notFound()
