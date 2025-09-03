@@ -773,3 +773,166 @@ Produce a sophisticated trail map illustration, 1200px wide by 8000px tall, in t
 - **Neo-Nature**: Rising trend in sustainability-focused and wellness brands
 
 Choose based on your target audience, brand personality, and desired user experience. Each style can be further customized by blending elements from multiple approaches.
+
+***
+
+1) Lock the Canvas Once
+
+Pick a canonical artboard (e.g., 1920×1080 or 2048×1152). Everything aligns to this:
+	•	SVG viewBox: 0 0 1920 1080
+	•	Background map: Render/generate to exactly 1920×1080
+	•	GSAP editing canvas: same pixel dimensions
+	•	Photoshop doc: same pixels @ 2× or 3× for print, but keep aspect ratio
+
+Tip: Make a tiny “registration crosshair” in the corners (or invisible guides) so you can verify alignment across tools/exports.
+
+⸻
+
+2) Generate the Background Map
+
+Use your AI image pipeline to produce the static map background (no trails drawn), but include faint street/route geometry you intend to follow. Export as:
+	•	map-bg@1x.jpg (web)
+	•	map-bg@2x.jpg (retina)
+	•	Optional map-bg@print.tif (300ppi) for print deliverables
+
+Keep the same aspect ratio as the SVG viewBox.
+
+⸻
+
+3) Author the Trails as SVG Paths (GSAP Tool)
+
+Use your GSAP SVG Path tool to hand-draw trails directly over the background reference (place the background as a locked layer while authoring). Save each path with a stable id and class.
+
+SVG scaffold:
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TrailMap">
+  <!-- Background as an <image> ensures 1:1 registration -->
+  <image href="/img/map-bg@1x.jpg" x="0" y="0" width="1920" height="1080" />
+
+  <!-- Trails layer -->
+  <g id="trails" vector-effect="non-scaling-stroke">
+    <path id="trail-apostolic" class="trail primary"
+          d="M120 880 C 240 760, 420 700, 640 720 ..."/>
+    <path id="trail-prophetic" class="trail secondary dashed"
+          d="M140 900 L 300 840 ..."/>
+    <!-- more paths -->
+  </g>
+
+  <!-- POIs / markers (optional) -->
+  <g id="markers">
+    <circle cx="640" cy="720" r="6" class="poi" />
+  </g>
+</svg>
+
+CSS tokens for style control:
+:root{
+  --trail-primary: #E96D2C;   /* trail marker orange */
+  --trail-secondary: #3C7D59; /* pine green */
+  --trail-width: 6;
+  --trail-glow: 12;
+}
+.trail {
+  fill: none;
+  stroke: var(--trail-primary);
+  stroke-width: var(--trail-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.trail.secondary { stroke: var(--trail-secondary); }
+.trail.dashed { stroke-dasharray: 10 8; }
+.trail.glow {
+  filter: url(#glow);
+}
+
+/* optional glow filter */
+svg defs#fx + * {}
+
+GSAP draw animation:
+import { gsap } from "gsap";
+
+gsap.set(".trail", { strokeDasharray: 1, strokeDashoffset: 1 });
+gsap.to("#trail-apostolic", { strokeDashoffset: 0, duration: 4, ease: "power2.inOut" });
+gsap.to("#trail-prophetic", { strokeDashoffset: 0, duration: 3, delay: 0.6, ease: "power2.inOut" });
+
+Use vector-effect: non-scaling-stroke so stroke widths stay consistent on responsive scales.
+
+⸻
+
+4) Export Trails for Photoshop as Overlays
+
+Because the trails are the source of truth, export them in a few ways:
+
+A) Clean SVG-only overlay
+	•	Temporarily remove the <image> background node.
+	•	Keep only the <g id="trails"> vectors.
+	•	Export as trails.svg (pure vector).
+In Photoshop, place it as a Smart Object above the background map. It will remain sharp at any size.
+
+B) Pre-styled transparent PNGs
+
+For raster workflows or effects not supported in PS vector:
+	•	In a headless export (or Illustrator/Figma), apply final stroke styles (width/glow/dash) and export:
+	•	trails@1x.png transparent, 1920×1080
+	•	trails@2x.png transparent
+Place above the background layer in Photoshop and nudge 0,0.
+
+C) Style swatches
+
+Export multiple colorways (light/dark mode) by swapping CSS variables before rendering the PNG:
+	•	trails.light.png (orange on muted)
+	•	trails.dark.png (gold on charcoal)
+	•	trails.high-contrast.png (white + black borders)
+
+If you want to clean up anything in the background under the trails, simply mask or clone the background beneath the overlay, knowing the vector paths are locked to the same coordinate system.
+
+⸻
+
+5) Keep Everything Registered (Coordinate Hygiene)
+	•	One viewBox to rule them all. Do not change it between tools.
+	•	Export at whole-pixel sizes (avoid fractional scaling that introduces antialias blur).
+	•	Use the same top-left origin (0,0) in SVG, GSAP tool, and Photoshop canvas.
+	•	For retina web: render the <image> at CSS 100% size; serve 2× assets via srcset/<picture> or CSS image-set().
+
+⸻
+
+6) Optional: Clickable / Interactive Trails
+
+Give each path semantic data attributes for tooltips, hit-testing, and analytics.
+
+<path id="trail-apostolic" class="trail primary"
+      data-name="Apostolic Path"
+      data-stage="3"
+      data-length="4.2km"
+      d="M..."/>
+
+Pointer handling:
+#trails .trail { pointer-events: stroke; cursor: pointer; }
+
+document.querySelectorAll('#trails .trail').forEach(p => {
+  p.addEventListener('pointerenter', () => p.classList.add('hover'));
+  p.addEventListener('click', e => openTrailPanel(e.currentTarget.dataset));
+});
+
+7) Production Tips & Pitfalls
+	•	Anti-alias seams: If you later split the background into tiles, ensure no scaling and no sub-pixel transforms. Prefer a single flat image behind SVG.
+	•	Stroke + glow performance: For heavy maps, use one static PNG glow overlay and keep the animated path as a crisp single stroke.
+	•	Z-ordering: Trails above the map image; POIs above trails; UI layers above POIs.
+	•	Accessibility: Provide aria-label on the SVG and desc for trails. Consider keyboard focus rings on paths.
+	•	Print: Keep vectors. Place trails.svg as Smart Object in PS/AI/Indesign. Re-tint colors per CMYK palette as needed.
+
+⸻
+
+8) Automation Hook (nice-to-have)
+
+When you finalize paths in your GSAP editor, emit a small JSON manifest:
+{
+  "viewBox": "0 0 1920 1080",
+  "trails": [
+    { "id": "trail-apostolic", "name": "Apostolic Path", "color": "#E96D2C", "width": 6 },
+    { "id": "trail-prophetic", "name": "Prophetic Spur", "color": "#3C7D59", "width": 6, "dash": "10 8" }
+  ]
+}
+
+Your build step can:
+	•	Inject styles (CSS variables) for web
+	•	Generate PNG overlays for PS (batch)
+	•	Produce legend graphics automatically

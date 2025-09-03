@@ -27,6 +27,8 @@ This directory contains the complete documentation for the TrailGuide project, o
 
 ### Source Documentation
 - **[full_docs.md](full_docs.md)** - Original monolithic documentation (1,512 lines)
+- **[tl_intake_questions.md](tl_intake_questions.md)** - Comprehensive thought leader intake process
+- **[baseline_site_map.md](baseline_site_map.md)** - Standardized publishing platform sitemap
 
 ## Quick Navigation
 
@@ -81,7 +83,7 @@ Start with documents 1-4 to understand the foundation, then move to your role-sp
 Review documents 1, 3, and 7 for your profile, plus any topic-specific documents.
 
 ### For Content Creation
-Use document 9 (Content Strategy) as your guide, and reference the Brand Identity (document 8) for voice and style.
+Use document 9 (Content Strategy) as your guide, and reference the Brand Identity (document 8) for voice and style. For thought leader onboarding, follow the comprehensive intake process in `tl_intake_questions.md`.
 
 ### For Development
 Reference document 6 (TrailMap) for the technical framework and user journey mapping.
