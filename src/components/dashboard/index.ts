@@ -1,5 +1,6 @@
 // Unified Dashboard Shell Components
 export { default as UnifiedShell } from './UnifiedShell';
+export { default as DashboardLanding } from './dashboard-landing';
 export { KPIBar } from './KPIBar';
 export { AgentConsole } from './AgentConsole';
 export { PlaybooksBar } from './PlaybooksBar';

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getKitBySlug } from '@/kits';
-import KitShell from '@/components/kit-shell';
+import { UnifiedShell } from '@/components/dashboard';
 
 interface KitPageProps {
   params: Promise<{ kit: string }>;
@@ -15,10 +15,13 @@ export default async function KitPage({ params }: KitPageProps) {
   }
 
   return (
-    <KitShell 
+    <UnifiedShell 
       kit={kit}
-      orgName="TrailGuide Demo Org"
-      userRole="admin"
+      orgContext={{
+        id: 'demo-org',
+        name: 'TrailGuide Demo Org',
+        role: 'admin'
+      }}
     />
   );
 }

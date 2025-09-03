@@ -70,6 +70,8 @@ export function Header() {
           items: [
             { name: 'TrailMap Assessment', href: '/trailmap', description: 'AI readiness evaluation' },
             { name: 'TrailHub', href: '/hub', description: 'Community connection' },
+            { name: 'TrailHub (Legacy)', href: '/hub-old', description: 'Original interface for comparison' },
+            { name: 'Interface Comparison', href: '/interface-comparison', description: 'Compare legacy vs unified shell' },
             { name: 'Unified Dashboard', href: '/dashboard', description: 'Next-gen TrailKit experience' },
             { name: 'TrailKits Library', href: '/kits', description: '15+ specialized modules' },
             { name: 'AI Workspace', href: '/ai-workspace', description: 'Interactive AI tools' }
