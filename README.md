@@ -72,15 +72,40 @@ See `.env.example` for available configuration options. All variables are option
 
 ## 🛠️ **Tech Stack**
 
-## 🛠️ **Tech Stack**
-
 - **Framework**: Next.js 15.5.0 with App Router
 - **Language**: TypeScript 5.0 with strict mode
-- **Styling**: Tailwind CSS 3.4 with custom design system
+- **Styling**: Tailwind CSS 4.0 with TrailGuide design system
 - **UI Components**: shadcn/ui with Radix primitives
 - **Icons**: Lucide React with 500+ consistent icons
-- **Animations**: Framer Motion for micro-interactions
+- **Content**: MDX with GitHub Flavored Markdown
 - **Deployment**: Vercel with automatic CI/CD
+
+## 🎨 **Design System**
+
+### Brand Philosophy
+TrailGuide's design embodies the **trail metaphor**: clarity, guidance, and natural progression. Our visual language counters digital overwhelm with breathing room, purposeful hierarchy, and trail-inspired aesthetics.
+
+### Color Palette
+```css
+/* Primary Trail Colors */
+--trailguide-evergreen: #3A5A40;  /* Muted pine - primary accent */
+--trailguide-bronze: #C89B3C;     /* Trail marker gold - secondary */
+--trailguide-background: #F7F9FA;  /* Morning mist - main background */
+--trailguide-neutral: #1A1E22;    /* Deep forest - primary text */
+
+/* Extended Trail Palette */
+--trailguide-earth: #8B7355;      /* Rich earth tone */
+--trailguide-horizon: #A8B2C1;    /* Distant mountain blue */
+--trailguide-sunrise: #E5B85C;    /* Sunrise accent */
+--trailguide-moss: #5F7A61;       /* Forest moss */
+```
+
+### Design Principles
+1. **Less is more** - Minimal, focused interfaces
+2. **Visual first** - Diagrams over paragraphs
+3. **Metaphorical coherence** - Trail imagery throughout
+4. **Typography as calm** - Clean, readable fonts
+5. **Color as orientation** - Consistent, meaningful color usage
 
 ## 🏃‍♂️ **Quick Start**
 

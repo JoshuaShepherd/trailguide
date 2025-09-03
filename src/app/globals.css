@@ -12,6 +12,14 @@
   --color-trailguide-slate: var(--trailguide-slate);
   --color-trailguide-border: var(--trailguide-border);
   
+  /* Extended Trail Colors */
+  --color-trailguide-earth: var(--trailguide-earth);
+  --color-trailguide-horizon: var(--trailguide-horizon);
+  --color-trailguide-cairn: var(--trailguide-cairn);
+  --color-trailguide-moss: var(--trailguide-moss);
+  --color-trailguide-sunrise: var(--trailguide-sunrise);
+  --color-trailguide-shadow: var(--trailguide-shadow);
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -53,13 +61,22 @@
 
 :root {
   --radius: 0.625rem;
-  /* TrailGuide Brand Colors */
-  --trailguide-background: #F7F9FA; /* Soft near-white background */
-  --trailguide-neutral: #1A1E22; /* Deep neutral accents */
-  --trailguide-evergreen: #3A5A40; /* Primary accent - muted evergreen */
-  --trailguide-bronze: #C89B3C; /* Secondary accent - warm bronze/gold */
-  --trailguide-slate: #64748b; /* UI neutrals - slate */
-  --trailguide-border: #e2e8f0; /* Light border - slate-200 */
+  
+  /* TrailGuide Brand Colors - Trail-Inspired Palette */
+  --trailguide-background: #F7F9FA; /* Soft morning mist */
+  --trailguide-neutral: #1A1E22; /* Deep forest shadow */
+  --trailguide-evergreen: #3A5A40; /* Primary - muted pine */
+  --trailguide-bronze: #C89B3C; /* Trail marker gold */
+  --trailguide-slate: #64748b; /* Mountain stone */
+  --trailguide-border: #e2e8f0; /* Morning fog */
+  
+  /* Extended Trail Color Palette */
+  --trailguide-earth: #8B7355; /* Rich earth tone */
+  --trailguide-horizon: #A8B2C1; /* Distant mountain blue */
+  --trailguide-cairn: #6B7280; /* Stone cairn gray */
+  --trailguide-moss: #5F7A61; /* Forest moss */
+  --trailguide-sunrise: #E5B85C; /* Sunrise accent */
+  --trailguide-shadow: #374151; /* Tree shadow */
   
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

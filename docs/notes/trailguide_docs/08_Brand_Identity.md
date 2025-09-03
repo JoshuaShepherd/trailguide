@@ -41,13 +41,43 @@ The style is minimalist, natural, and navigable. TrailGuide's design language dr
 ## 10.4 Visual Identity
 
 The visual system should reinforce the feeling of a map and a trailhead:
+
+### Logo & Symbols
 - **Logo**: A mark that evokes both a trail marker and a compass. To be finalized, but should embody simplicity and directional clarity.
-- **Color Palette**: Inspired by natural parks and trails: muted greens, warm earth tones, slate grays, and a single bright accent (like trail marker orange or sunrise gold).
-- **Imagery**: Avoid stock-photo clichés of "AI" (robots, neon brains). Instead, use:
-  - Trail photography (paths, cairns, horizons).
-  - Abstracted cartography (lines, nodes, maps).
-  - Interface screenshots (actual dashboards, prototypes).
-- **Layout**: Grid-based, breathing room, whitespace. No clutter. Each page should feel like a clear opening in the woods.
+- **Icons**: Consistent use of Lucide React icons with trail-inspired metaphors (compass, map-pin, route, mountain)
+
+### Color Palette
+**Primary Trail Colors:**
+- **Evergreen** `#3A5A40` - Muted pine, primary accent for navigation and key actions
+- **Bronze** `#C89B3C` - Trail marker gold, secondary accent for highlights and CTAs
+- **Background** `#F7F9FA` - Morning mist, main background providing breathing room
+- **Neutral** `#1A1E22` - Deep forest shadow, primary text and headings
+
+**Extended Trail Palette:**
+- **Earth** `#8B7355` - Rich earth tone for secondary content areas
+- **Horizon** `#A8B2C1` - Distant mountain blue for subtle backgrounds
+- **Cairn** `#6B7280` - Stone cairn gray for UI elements and borders
+- **Moss** `#5F7A61` - Forest moss for success states and nature accents
+- **Sunrise** `#E5B85C` - Sunrise accent for warnings and energy
+- **Shadow** `#374151` - Tree shadow for subtle text and secondary elements
+
+### Typography
+- **Headings**: Bold, clear hierarchy using system fonts optimized for readability
+- **Body**: Generous line height and spacing for comfortable reading
+- **Code**: Monospace for technical content and data displays
+
+### Imagery Guidelines
+Avoid stock-photo clichés of "AI" (robots, neon brains). Instead, use:
+- **Trail photography**: Paths, cairns, horizons, natural wayfinding
+- **Abstracted cartography**: Clean lines, nodes, pathway diagrams
+- **Interface screenshots**: Actual dashboards, prototypes, real tools
+- **Geometric patterns**: Inspired by topographic maps and trail markers
+
+### Layout Principles
+- **Grid-based**: Consistent spacing and alignment using 8px grid system
+- **Breathing room**: Generous whitespace prevents cognitive overwhelm
+- **Progressive disclosure**: Information revealed in logical, trail-like progression
+- **Clear hierarchy**: Each page should feel like a clear opening in the woods
 
 ---
 
