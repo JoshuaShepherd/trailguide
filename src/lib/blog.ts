@@ -185,3 +185,19 @@ export function paginatePosts(posts: BlogPost[], page: number, limit: number = 1
     }
   }
 }
+
+// Get all tags with post counts
+export async function getTagsWithCounts(): Promise<{ tag: string; count: number }[]> {
+  const posts = await getAllPosts()
+  const tagCounts = new Map<string, number>()
+  
+  posts.forEach(post => {
+    post.tags.forEach(tag => {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1)
+    })
+  })
+  
+  return Array.from(tagCounts.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count)
+}
