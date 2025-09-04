@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Eye, BookOpen, Users, Lightbulb, Target, TrendingUp } from 'lucide-react';
+import { HomePageAgent } from '@/components/HomePageAgent';
 
 export function TemplateHeroSection() {
   return (
@@ -123,6 +124,11 @@ export function TemplateHeroSection() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* AI Agent Section - Above the fold */}
+            <div className="mt-20">
+              <HomePageAgent />
             </div>
           </div>
         </div>

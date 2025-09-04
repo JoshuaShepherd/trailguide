@@ -1,0 +1,7 @@
+# Vendor Files - Documentation Only
+
+**/vendor/** directory contains reference documentation and should not be imported directly into the codebase.
+
+# TrailGuide Source Code
+
+All implementation should happen in `/src/` using officially installed packages.
