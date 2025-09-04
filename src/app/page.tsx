@@ -1,23 +1,19 @@
-import { HeroSection } from '@/components/sections/HeroSection';
-import { TrailMapSection } from '@/components/sections/TrailMapSection';
-import { TrailHikesSection } from '@/components/sections/TrailHikesSection';
-import { TrailKitsSection } from '@/components/sections/TrailKitsSection';
-import { CaseStudySection } from '@/components/sections/CaseStudySection';
-import { TrustEthicsSection } from '@/components/sections/TrustEthicsSection';
-import { NewsletterSection } from '@/components/sections/NewsletterSection';
-import { FinalCTASection } from '@/components/sections/FinalCTASection';
+import { NewHeroSection } from '@/components/sections/NewHeroSection';
+import { DualPathSection } from '@/components/sections/DualPathSection';
+import { ProofSection } from '@/components/sections/ProofSection';
+import { ValuesSection } from '@/components/sections/ValuesSection';
+import { ClientStoriesSection } from '@/components/sections/ClientStoriesSection';
+import { StartJourneySection } from '@/components/sections/StartJourneySection';
 
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      <TrailMapSection />
-      <TrailHikesSection />
-      <TrailKitsSection />
-      <CaseStudySection />
-      <TrustEthicsSection />
-      <NewsletterSection />
-      <FinalCTASection />
+      <NewHeroSection />
+      <DualPathSection />
+      <ProofSection />
+      <ValuesSection />
+      <ClientStoriesSection />
+      <StartJourneySection />
     </main>
   );
 }
