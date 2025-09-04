@@ -81,6 +81,9 @@ export function Header() {
           name: 'Learning',
           icon: Mountain,
           items: [
+            { name: 'What You Get', href: '/what-you-get', description: 'Complete platform overview & tour' },
+            { name: 'Expert Publisher Guide', href: '/expert-publisher-guide', description: 'Complete thought leadership platform guide' },
+            { name: 'Demo Template', href: '/template', description: 'Live example of complete platform' },
             { name: 'Hikes (Workshops)', href: '/hikes', description: 'Guided learning experiences' },
             { name: 'Case Studies', href: '/case-studies', description: 'Success stories & examples' },
             { name: 'Blog', href: '/blog', description: 'Insights & best practices' }
@@ -120,6 +123,7 @@ export function Header() {
           name: 'Professional',
           icon: Briefcase,
           items: [
+            { name: 'Intake Process', href: '/intake', description: 'Begin your platform journey' },
             { name: 'Advisory Services', href: '/advisory', description: 'Expert guidance' },
             { name: 'Products', href: '/products', description: 'Specialized offerings' },
             { name: 'Partnerships', href: '/partnerships', description: 'Strategic alliances' }

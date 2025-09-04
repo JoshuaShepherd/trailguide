@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -25,11 +26,6 @@ import {
   Star
 } from 'lucide-react'
 import { useState } from 'react'
-
-export const metadata: Metadata = {
-  title: 'Site Map | TrailGuide',
-  description: 'Navigate TrailGuide\'s platform with our comprehensive site map. Find all pages, resources, and tools for nonprofit AI adoption.',
-}
 
 const siteStructure = [
   {

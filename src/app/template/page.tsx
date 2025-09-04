@@ -1,41 +1,77 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { CrossReference } from '@/components/cross-reference';
+import { TemplateSiteMapSection } from '@/components/sections/TemplateSiteMapSection';
 import Link from 'next/link';
-import { Crown, Target, Users, TrendingUp, Award, CheckCircle, ArrowRight, Lightbulb, Rocket, Star } from 'lucide-react';
+import { Crown, Target, Users, TrendingUp, Award, CheckCircle, ArrowRight, Lightbulb, Rocket, Star, Eye, Code } from 'lucide-react';
 
 export default function ExpertPublisherAbout() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Demo Notice */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-center text-white">
+      {/* Template Notice */}
+      <div className="bg-gradient-to-r from-trailguide-evergreen to-trailguide-sage px-4 py-3 text-center text-white">
         <div className="container mx-auto">
           <div className="flex items-center justify-center gap-2 text-sm font-medium">
-            <Crown className="h-4 w-4" />
-            <span>🎯 DEMO: Expert Publisher About Page Template - See How Thought Leaders Build Authority</span>
-            <Crown className="h-4 w-4" />
+            <Eye className="h-4 w-4" />
+            <span>🎯 LIVE TEMPLATE: Complete Expert Publisher Platform - This Is What You Get</span>
+            <Eye className="h-4 w-4" />
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <div className="inline-flex items-center gap-2 text-sm text-trailguide-evergreen bg-trailguide-evergreen/5 px-4 py-2 rounded-full mb-6">
-            <Lightbulb className="h-4 w-4" />
-            <span>Expert Publisher Platform Demo</span>
+        {/* Template Showcase Header */}
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 text-sm text-trailguide-evergreen bg-trailguide-evergreen/10 px-6 py-3 rounded-full mb-6 border border-trailguide-evergreen/20">
+            <Code className="h-4 w-4" />
+            <span>Expert Publisher Platform Template</span>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-trailguide-neutral mb-6">
-            About This <span className="text-trailguide-evergreen">Demo Template</span>
+            Your Complete <span className="text-trailguide-evergreen">Digital Platform</span>
           </h1>
           
-          <p className="text-xl text-trailguide-slate leading-relaxed">
-            This entire site demonstrates how our Expert Publisher platform works in practice. 
-            Every page, feature, and workflow you see here is what thought leaders get when they launch with our platform.
+          <p className="text-xl text-trailguide-slate leading-relaxed mb-8">
+            This entire website is a working example of the Expert Publisher platform. Every feature, design choice, 
+            and user experience demonstrates exactly what your thought leadership platform will deliver.
           </p>
+
+          <div className="bg-gradient-to-r from-trailguide-evergreen/10 to-trailguide-sage/10 border border-trailguide-evergreen/20 rounded-2xl p-8 mb-12">
+            <h3 className="text-2xl font-bold text-trailguide-neutral mb-4">What You're Experiencing</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-trailguide-evergreen mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-trailguide-neutral">Live Content Engine</p>
+                  <p className="text-sm text-trailguide-slate">Articles, media, and resources exactly as your audience will see them</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-trailguide-evergreen mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-trailguide-neutral">Working Lead Generation</p>
+                  <p className="text-sm text-trailguide-slate">Forms, assessments, and capture tools functioning in real-time</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-trailguide-evergreen mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-trailguide-neutral">Complete User Journey</p>
+                  <p className="text-sm text-trailguide-slate">From first visit to engagement to conversion pathways</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-trailguide-evergreen mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-trailguide-neutral">Best Practice Design</p>
+                  <p className="text-sm text-trailguide-slate">Every element optimized for thought leader success</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Demo Purpose */}
+        {/* Template Purpose */}
         <section className="mb-20">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm border border-trailguide-evergreen/20 rounded-3xl p-12">
@@ -43,9 +79,9 @@ export default function ExpertPublisherAbout() {
                 <div className="w-16 h-16 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Target className="h-8 w-8 text-trailguide-evergreen" />
                 </div>
-                <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Purpose of This Demo</h2>
+                <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Template Demonstration</h2>
                 <p className="text-trailguide-slate text-lg">
-                  This isn&apos;t just a marketing site—it&apos;s an interactive showroom that demonstrates the complete Expert Publisher platform capabilities.
+                  This isn&apos;t just a marketing site—it&apos;s your actual platform template showing complete capabilities in action.
                 </p>
               </div>
 
@@ -75,6 +111,9 @@ export default function ExpertPublisherAbout() {
             </div>
           </div>
         </section>
+
+        {/* Cross Reference */}
+        <CrossReference currentPage="template" className="mb-20" />
 
         {/* Template Story */}
         <section className="mb-20">
@@ -271,19 +310,169 @@ export default function ExpertPublisherAbout() {
           </div>
         </section>
 
+        {/* Interactive Demo Features */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Try These Live Demo Features</h2>
+            <p className="text-trailguide-slate max-w-2xl mx-auto">
+              Don&apos;t just look—interact! These features are fully functional in this demo environment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white/80 backdrop-blur-sm border border-trailguide-evergreen/20 rounded-3xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center">
+                  <Rocket className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-trailguide-neutral">Interactive Assessment</h3>
+                  <p className="text-trailguide-slate text-sm">AI-powered personalization in action</p>
+                </div>
+              </div>
+              <p className="text-trailguide-slate mb-4">
+                Experience our intelligent assessment system that creates personalized recommendations based on your expertise and goals.
+              </p>
+              <Button className="w-full mb-3" asChild>
+                <Link href="/trailmap">Take Live Assessment</Link>
+              </Button>
+              <p className="text-xs text-trailguide-slate text-center">
+                ✨ Fully functional AI analysis
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm border border-trailguide-evergreen/20 rounded-3xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center">
+                  <Target className="h-5 w-5 text-emerald-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-trailguide-neutral">Authority Dashboard</h3>
+                  <p className="text-trailguide-slate text-sm">Complete content & business hub</p>
+                </div>
+              </div>
+              <p className="text-trailguide-slate mb-4">
+                See the unified dashboard that thought leaders use to manage content, track analytics, and grow their business.
+              </p>
+              <Button variant="outline" className="w-full mb-3" asChild>
+                <Link href="/hub">Explore Dashboard</Link>
+              </Button>
+              <p className="text-xs text-trailguide-slate text-center">
+                📊 Real analytics and workflows
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm border border-trailguide-evergreen/20 rounded-3xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center">
+                  <Users className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-trailguide-neutral">Content Showcase</h3>
+                  <p className="text-trailguide-slate text-sm">Real articles with paywall demo</p>
+                </div>
+              </div>
+              <p className="text-trailguide-slate mb-4">
+                Browse actual thought leadership content with functioning membership gates and premium features.
+              </p>
+              <Button variant="outline" className="w-full mb-3" asChild>
+                <Link href="/blog">Browse Articles</Link>
+              </Button>
+              <p className="text-xs text-trailguide-slate text-center">
+                📝 Live content management system
+              </p>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm border border-trailguide-evergreen/20 rounded-3xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-orange-500/10 rounded-full flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 text-orange-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-trailguide-neutral">Revenue Models</h3>
+                  <p className="text-trailguide-slate text-sm">Products, courses & consulting</p>
+                </div>
+              </div>
+              <p className="text-trailguide-slate mb-4">
+                See how multiple revenue streams integrate seamlessly within a single platform ecosystem.
+              </p>
+              <Button variant="outline" className="w-full mb-3" asChild>
+                <Link href="/products">View Monetization</Link>
+              </Button>
+              <p className="text-xs text-trailguide-slate text-center">
+                💰 Complete commerce integration
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Educational Connection */}
+        <section className="mb-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-trailguide-evergreen/10 to-blue-50 border border-trailguide-evergreen/20 rounded-3xl p-12 text-center">
+              <div className="w-16 h-16 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Star className="h-8 w-8 text-trailguide-evergreen" />
+              </div>
+              <h2 className="text-3xl font-bold text-trailguide-neutral mb-6">
+                Want to Learn the Strategy Behind This Demo?
+              </h2>
+              <p className="text-xl text-trailguide-slate mb-8">
+                This template demonstrates proven strategies, but understanding <em>why</em> these elements work 
+                together will help you maximize your own platform&apos;s potential.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/expert-publisher-guide">
+                    📚 Read the Complete Guide
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" className="bg-trailguide-evergreen hover:bg-trailguide-evergreen/90" asChild>
+                  <Link href="/trailmap">Get Your Custom Platform</Link>
+                </Button>
+              </div>
+
+              <p className="text-sm text-trailguide-slate">
+                💡 The guide explains what you need, this demo shows how it works in practice
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="text-center">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-trailguide-neutral mb-4">
-              Ready to See Your Platform in Action?
+              Ready to Build Your Own Platform?
             </h2>
             <p className="text-trailguide-slate mb-8">
-              This demo shows you exactly what you&apos;ll get with Expert Publisher. 
-              Take the assessment to see your personalized platform recommendations.
+              You&apos;ve seen how it works. Now get your personalized platform assessment 
+              and start building your complete thought leadership presence.
             </p>
             <Button size="lg" className="bg-trailguide-evergreen hover:bg-trailguide-evergreen/90" asChild>
               <Link href="/trailmap">
                 Take Platform Assessment
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </section>
+
+        {/* Complete Site Map Showcase */}
+        <TemplateSiteMapSection />
+
+        {/* Final CTA */}
+        <section className="mb-16">
+          <div className="max-w-2xl mx-auto text-center bg-gradient-to-br from-trailguide-evergreen/5 to-trailguide-sage/5 rounded-3xl p-12 border border-trailguide-evergreen/10">
+            <h2 className="text-3xl font-bold text-trailguide-neutral mb-6">Ready to Build Yours?</h2>
+            <p className="text-trailguide-slate mb-8 leading-relaxed">
+              You've explored the template. Now discover your specific needs, goals, and opportunities 
+              and start building your complete thought leadership presence.
+            </p>
+            <Button size="lg" className="bg-trailguide-evergreen hover:bg-trailguide-evergreen/90" asChild>
+              <Link href="/intake">
+                Start Your Platform
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

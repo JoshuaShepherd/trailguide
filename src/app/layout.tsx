@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SkipLink, FocusManager } from '@/components/accessibility';
+import { TemplateGuide } from '@/components/TemplateGuide';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TrailGuide - AI That Serves Humans",
-  description: "Help your nonprofit adopt AI thoughtfully with tools, training, and formation that honor innovation and values.",
+  title: "Expert Publisher Platform Template - Complete Thought Leadership Solution",
+  description: "Live template demonstrating the complete digital platform for thought leaders. See exactly how to build authority, engage audiences, and monetize expertise.",
 };
 
 export default function RootLayout({
@@ -37,6 +38,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <TemplateGuide />
       </body>
     </html>
   );

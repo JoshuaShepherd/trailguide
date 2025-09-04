@@ -19,11 +19,13 @@ import {
   Footnote, 
   Footnotes 
 } from '@/components/mdx/table-of-contents'
+import { TemplateCallout } from '@/components/mdx/TemplateCallout'
 
 // Default MDX components
 const components = {
   // Custom components
   Callout,
+  TemplateCallout,
   Note,
   Quote,
   CodeBlock,
