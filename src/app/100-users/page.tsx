@@ -209,6 +209,9 @@ const HundredUsersPage = () => {
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [aggregateStats, setAggregateStats] = useState<any>(null);
+  const [showWhatTheyGet, setShowWhatTheyGet] = useState(false);
+  const [showAboutNumbers, setShowAboutNumbers] = useState(false);
+  const [showHowConnected, setShowHowConnected] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -310,6 +313,28 @@ const HundredUsersPage = () => {
             </div>
           </div>
         )}
+
+        {/* Action Buttons */}
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            onClick={() => setShowWhatTheyGet(true)}
+            className="px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-emerald-800 transition-colors shadow-lg hover:shadow-xl"
+          >
+            What They Get
+          </button>
+          <button
+            onClick={() => setShowAboutNumbers(true)}
+            className="px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
+          >
+            About The Numbers
+          </button>
+          <button
+            onClick={() => setShowHowConnected(true)}
+            className="px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors shadow-lg hover:shadow-xl"
+          >
+            How They're Connected
+          </button>
+        </div>
       </div>
 
       {/* Network Visualization */}
@@ -453,6 +478,477 @@ const HundredUsersPage = () => {
           </div>
         </div>
       </div>
+
+      {/* What They Get Modal */}
+      {showWhatTheyGet && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowWhatTheyGet(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-slate-900">What You Get for $1,000 + 10%</h2>
+                <button
+                  onClick={() => setShowWhatTheyGet(false)}
+                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-slate-600 mt-3 text-lg">
+                Joining this network is not simply buying a website — it's investing in a complete digital publishing operating system, purpose-built for movement leaders.
+              </p>
+            </div>
+
+            {/* Content */}
+            <div className="px-8 py-6 space-y-8">
+              
+              {/* Digital Publishing Platform */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-600">🚀</span>
+                  A Digital Publishing Platform
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">State of the art:</span>
+                    <span>Built on React, Next.js, Tailwind, Supabase, and Vercel — modern tech with <em>perfect performance scores</em>.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">Ultra-personalized:</span>
+                    <span>The digital infrastructure and AI agents are calibrated for thought leaders in faith, movemental leadership, and missional networks.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">Built for transmission of ideas:</span>
+                    <span>The platform is optimized for teaching, storytelling, and virality — designed to make ideas "sneezeable."</span>
+                  </div>
+                </div>
+              </section>
+
+              {/* Content Creation Hub */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-green-700">✍️</span>
+                  A Content Creation Hub
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">Adapted environments:</span>
+                    <span>Spaces for creating blog posts, videos, podcasts, visualizations, lessons, coaching engagements, workshops, and more.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">AI support, not AI takeover:</span>
+                    <span>Agents help with ideation, drafting, repurposing, and design — while keeping the leader's voice central.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-semibold text-slate-900">Encouragement to publish more:</span>
+                    <span>Direct engagement tools + network encouragement increase output. Leaders will not only republish their back-catalog but create more than ever before.</span>
+                  </div>
+                </div>
+              </section>
+
+              {/* E-Commerce */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-slate-700">💳</span>
+                  Full E-Commerce, Ready to Go
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div>Integrated <strong>Stripe checkout</strong> for subscriptions, products, donations, and event registrations.</div>
+                  <div>No need for external platforms — revenue flows directly to the leader.</div>
+                </div>
+              </section>
+
+              {/* Membership & Authentication */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-slate-600">👥</span>
+                  Membership & Authentication
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div><strong>Supabase-based sign-in/authentication</strong> for subscriber management.</div>
+                  <div><strong>Tiered membership</strong> models ready to deploy (free, premium, patron).</div>
+                  <div>Immediate ability to gate content behind paywalls or offer "members-only" experiences.</div>
+                </div>
+              </section>
+
+              {/* Learning Management System */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-amber-700">🎓</span>
+                  Customizable Learning Management System
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div>Pre-built LMS modules: courses, workshops, and training pathways.</div>
+                  <div>Content creators can <strong>drag-and-drop components</strong> (video cards, lesson outlines, discussion prompts) into their own curricula.</div>
+                  <div>Supports multiple "tracks" for general audiences, advanced students, or specialized groups.</div>
+                </div>
+              </section>
+
+              {/* Analytics & SEO */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-orange-700">📊</span>
+                  Analytics, SEO & Digital Strategy
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div>Ongoing <strong>digital & AI consultation</strong> based on years of experience in digital marketing for this sector.</div>
+                  <div><strong>Comprehensive analytics:</strong> not just Google-style metrics, but insights aggregated across the network of leaders.</div>
+                  <div>Data helps leaders refine messaging, spot opportunities, and grow audiences.</div>
+                </div>
+              </section>
+
+              {/* AI Agents */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-slate-700">🤖</span>
+                  AI Agents, Done Right
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div>Agents embedded into every workflow: writing, teaching, community engagement, donor management.</div>
+                  <div>Always aligned with the mission — enhancing productivity while preserving authenticity.</div>
+                  <div>Agents will learn from aggregated usage across the network, constantly improving.</div>
+                </div>
+              </section>
+
+              {/* The Outcome */}
+              <section className="bg-emerald-50 rounded-xl p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">🎯</span>
+                  The Outcome
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div><strong>Amplified voice:</strong> Leaders' ideas travel further and faster.</div>
+                  <div><strong>Increased revenue:</strong> Direct subscriptions, donations, and product sales without middlemen.</div>
+                  <div><strong>Network effects:</strong> Each leader benefits from the visibility, cross-promotion, and credibility of the entire coalition.</div>
+                  <div><strong>Trust in a noisy AI world:</strong> Audiences know that these leaders are real, present, and equipped with best-in-class digital tools.</div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-emerald-600">
+                  <p className="text-lg font-semibold text-slate-900">This is not just a website.</p>
+                  <p className="text-lg font-semibold text-emerald-700">It's a launchpad for movemental impact in the digital age.</p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
+              <div className="flex justify-between items-center">
+                <div className="text-slate-600">
+                  <span className="font-semibold">Investment:</span> $1,000 setup + 10% platform fee
+                </div>
+                <button
+                  onClick={() => setShowWhatTheyGet(false)}
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                >
+                  Got It
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* About The Numbers Modal */}
+      {showAboutNumbers && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowAboutNumbers(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-slate-900">The Story of the Numbers</h2>
+                <button
+                  onClick={() => setShowAboutNumbers(false)}
+                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-slate-600 mt-3 text-lg">
+                When you step back, the math here is not complicated — but the story behind it is powerful.
+              </p>
+              <p className="text-slate-700 mt-2 font-medium">
+                This is not a speculative bet on a new technology. It's the careful alignment of <em>best practice digital publishing</em> with <em>a movemental audience already waiting for it</em>.
+              </p>
+            </div>
+
+            {/* Content */}
+            <div className="px-8 py-6 space-y-8">
+              
+              {/* The First 100 */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">💯</span>
+                  The First 100: Proof of Concept
+                </h3>
+                <div className="space-y-4 text-slate-700">
+                  <div><strong>Pricing model:</strong> $1,000 one-time + 10% ongoing revenue share.</div>
+                  <div><strong>Pipeline:</strong> Alan Hirsch, Brad Brisco, Tim Catchim, and others in their immediate orbit. Each already produces high-value intellectual property and already has an audience.</div>
+                  <div><strong>Adoption curve:</strong> These first 100 are not cold leads. They are partners, colleagues, and aligned voices who have been waiting for a viable publishing alternative.</div>
+                </div>
+                <div className="mt-4 p-4 bg-emerald-50 rounded-lg">
+                  <p className="font-semibold text-emerald-900">Revenue at 100 users: $100,000 upfront + recurring 10%.</p>
+                  <p className="text-emerald-800 mt-1"><strong>The deeper value:</strong> 100 aligned movement leaders generating and amplifying digital content together — something the publishing industry cannot replicate.</p>
+                </div>
+              </section>
+
+              {/* Scale to 500 */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-green-700">📈</span>
+                  The Scale to 500: Network Effect
+                </h3>
+                <div className="space-y-4 text-slate-700">
+                  <div><strong>Step change in pricing:</strong> $2,000 + 10% from user #101 onward.</div>
+                  <div><strong>Network amplification:</strong> At 500, we are not 5× the size, but closer to 10× the impact. Every new voice cross-pollinates with others, multiplying reach and trust.</div>
+                  <div><strong>Content velocity:</strong> With embedded AI agents and custom publishing stacks, each leader produces more, faster, and in more formats.</div>
+                </div>
+                <div className="mt-4 p-4 bg-green-50 rounded-lg">
+                  <p className="font-semibold text-green-900">Revenue at 500 users: $1,000,000 upfront + growing 10% revenue share.</p>
+                  <p className="text-green-800 mt-1"><strong>The deeper value:</strong> A digital coalition that already outpaces legacy publishers in agility, economics, and reach.</p>
+                </div>
+              </section>
+
+              {/* Cap at 1,000 */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-amber-700">🎯</span>
+                  The Cap at 1,000: Scarcity and Sustainability
+                </h3>
+                <div className="space-y-4 text-slate-700">
+                  <div><strong>Intentional cap:</strong> This is not a race to infinity. By design, we stop at 1,000 to protect quality, coherence, and brand integrity.</div>
+                  <div><strong>Final pricing:</strong> $5,000 + 10% (with symbolic rebates and rewards honoring early adopters).</div>
+                  <div><strong>Aggregate audience size:</strong> Conservatively, if each leader reaches 2,000–5,000 people, the network collectively touches 2–5 million directly engaged learners.</div>
+                </div>
+                <div className="mt-4 p-4 bg-amber-50 rounded-lg">
+                  <p className="font-semibold text-amber-900">Revenue at 1,000 users: $3,000,000 upfront + 10% of all publishing income across the network.</p>
+                  <p className="text-amber-800 mt-1"><strong>The deeper value:</strong> A permanent coalition, each leader owning their digital house, with TrailGuide as the invisible infrastructure that sustains the movement.</p>
+                </div>
+              </section>
+
+              {/* Why This Works */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-slate-700">⚡</span>
+                  Why This Works
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div><strong>Low overhead:</strong> This is not a traditional publisher with warehouses, printing costs, or bloated marketing spend. The tech stack is lean, replicable, and already proven.</div>
+                  <div><strong>Clear demand:</strong> Leaders like Alan and Brad know the traditional publishing model is broken. They are not just open to this solution — they are actively asking for it.</div>
+                  <div><strong>Aligned incentives:</strong> We only win when the leaders win. The 10% structure ensures TrailGuide is invested in their ongoing success.</div>
+                  <div><strong>Scarcity mindset:</strong> By capping the network, we increase urgency to join while preserving trust and quality.</div>
+                </div>
+              </section>
+
+              {/* Numbers in Perspective */}
+              <section className="bg-slate-50 rounded-xl p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">📊</span>
+                  The Numbers in Perspective
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div><strong>At 100:</strong> <em>Proof and credibility</em>. We've shown the model works.</div>
+                  <div><strong>At 500:</strong> <em>Momentum and market validation</em>. We've built something publishers cannot compete with.</div>
+                  <div><strong>At 1,000:</strong> <em>Scarcity and permanence</em>. We've secured a coalition that continues to generate shared value long after the upfront fees.</div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-emerald-600">
+                  <p className="text-lg font-semibold text-slate-900">This is what it looks like when movemental thinking meets sustainable digital economics.</p>
+                  <p className="text-lg font-semibold text-emerald-700 mt-1">The numbers are not hype — they're the natural outflow of aligning the right model with the right people at the right time.</p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
+              <div className="flex justify-between items-center">
+                <div className="text-slate-600">
+                  <span className="font-semibold">Scale trajectory:</span> 100 → 500 → 1,000 users maximum
+                </div>
+                <button
+                  onClick={() => setShowAboutNumbers(false)}
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                >
+                  Got It
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* How They're Connected Modal */}
+      {showHowConnected && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowHowConnected(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-slate-900">How They're Connected</h2>
+                <button
+                  onClick={() => setShowHowConnected(false)}
+                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-slate-600 mt-3 text-lg">
+                One of the great questions to work out as we scale is not simply <em>who</em> is in the network, but <em>how</em> they are connected.
+              </p>
+              <p className="text-slate-700 mt-2 font-medium">
+                The value of 100 or 1,000 thought leaders publishing digitally is not just in their individual output — it is in the way they amplify one another.
+              </p>
+            </div>
+
+            {/* Content */}
+            <div className="px-8 py-6 space-y-8">
+              
+              {/* Early Principles */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                  <span className="text-green-700">🌱</span>
+                  Early Principles
+                </h3>
+                <p className="text-slate-600 mb-6">As we think about connection, several best practices emerge:</p>
+                
+                <div className="space-y-6">
+                  {/* Cross-Content Linking */}
+                  <div className="border-l-4 border-green-600 pl-6">
+                    <h4 className="text-xl font-bold text-slate-900 mb-3">1. Encouraged Cross-Content Linking</h4>
+                    <div className="space-y-2 text-slate-700">
+                      <div>• Each author is invited to highlight, quote, or link to another's work.</div>
+                      <div>• These interconnections are tracked and suggested through analytics-driven nudges, ensuring readers are exposed to a broader constellation of voices.</div>
+                    </div>
+                  </div>
+
+                  {/* Unified Publishing Support */}
+                  <div className="border-l-4 border-emerald-600 pl-6">
+                    <h4 className="text-xl font-bold text-slate-900 mb-3">2. Unified Publishing Support</h4>
+                    <div className="space-y-2 text-slate-700">
+                      <div>• Group analytics (e.g., which topics are resonating, which formats are performing) are distilled into teaching modules.</div>
+                      <div>• Subscribers don't just receive content — they receive meta-content about <em>how to be more effective publishers together</em>.</div>
+                      <div>• This turns the network itself into a living classroom for digital publishing.</div>
+                    </div>
+                  </div>
+
+                  {/* Collaboration Supports */}
+                  <div className="border-l-4 border-slate-600 pl-6">
+                    <h4 className="text-xl font-bold text-slate-900 mb-3">3. Collaboration Supports</h4>
+                    <div className="space-y-2 text-slate-700 mb-4">
+                      <div>The platform provides light-touch ways to discover and respond to opportunities.</div>
+                    </div>
+                    
+                    {/* Example Story */}
+                    <div className="bg-slate-50 rounded-lg p-5">
+                      <p className="font-semibold text-slate-900 mb-3">Example:</p>
+                      <div className="space-y-2 text-slate-700">
+                        <div>• Brad Brisco posts a workshop on <em>covocational movements</em>. At first it's a small, focused event.</div>
+                        <div>• Alan Hirsch later sees an unobtrusive calendar prompt and signs up.</div>
+                        <div>• Brad notices Alan's interest and invites him to co-speak.</div>
+                        <div>• Attendance grows, energy multiplies, and the proceeds can be shared.</div>
+                      </div>
+                      <p className="text-green-700 font-medium mt-3">What began as one leader's workshop becomes a joint venture with wider reach.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Platform as Scenius */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-amber-700">✨</span>
+                  Platform as Scenius
+                </h3>
+                <p className="text-slate-700 mb-4">
+                  This approach is not about algorithmic manipulation — it's about <strong>scenius</strong>: the collective genius that emerges when a community amplifies each other's creativity.
+                </p>
+                
+                <div className="bg-amber-50 rounded-lg p-6">
+                  <p className="font-semibold text-slate-900 mb-4">The digital infrastructure should:</p>
+                  <div className="space-y-2 text-slate-700">
+                    <div>• Make collaboration <em>obvious and easy</em>, without being pushy.</div>
+                    <div>• Provide small nudges that create serendipity.</div>
+                    <div>• Track and visualize how voices in the network are interlinked, helping participants see the movement grow.</div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Why This Matters */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">🎯</span>
+                  Why This Matters
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-green-50 rounded-lg p-5">
+                    <h4 className="font-bold text-green-900 mb-2">For Individuals</h4>
+                    <p className="text-green-800 text-sm">Connection creates credibility, reach, and new streams of income.</p>
+                  </div>
+                  <div className="bg-emerald-50 rounded-lg p-5">
+                    <h4 className="font-bold text-emerald-900 mb-2">For the Network</h4>
+                    <p className="text-emerald-800 text-sm">Each collaboration strengthens the coalition's identity and voice in the wider marketplace.</p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-5">
+                    <h4 className="font-bold text-slate-900 mb-2">For Readers & Learners</h4>
+                    <p className="text-slate-700 text-sm">They encounter not just isolated ideas but a web of interrelated insights, modeling how movements actually grow.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* The Promise */}
+              <section className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-green-700">🚀</span>
+                  The Promise
+                </h3>
+                <div className="space-y-3 text-slate-700">
+                  <div>If each leader simply publishes alone, the value is <strong>additive</strong>.</div>
+                  <div>If each leader publishes <em>together</em>, the value is <strong>exponential</strong>.</div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-green-600">
+                  <p className="text-lg font-semibold text-green-700">That is the opportunity we must design toward.</p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
+              <div className="flex justify-between items-center">
+                <div className="text-slate-600">
+                  <span className="font-semibold">Connection principle:</span> Individual → Collaborative → Exponential
+                </div>
+                <button
+                  onClick={() => setShowHowConnected(false)}
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                >
+                  Got It
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* User Detail Modal */}
       {selectedUser && (
