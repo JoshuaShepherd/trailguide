@@ -519,7 +519,7 @@ const HundredUsersPage = () => {
                     Pipeline includes: Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K), Deb Hirsch (20K), Hugh Halter (30K) + 95 more
                   </div>
                   <div className="text-emerald-400 text-sm font-medium">
-                    Annual Recurring: $10,608
+                    Annual Recurring: $336,000 (est)
                   </div>
                 </div>
               </div>
