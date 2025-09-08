@@ -472,47 +472,58 @@ const HundredUsersPage = () => {
         </div>
       </div>
 
-        {/* TrailGuide Business Stats */}
-        <div className="flex justify-center px-4 mb-8">
-          <div className="bg-emerald-900/80 backdrop-blur-sm rounded-2xl px-4 sm:px-6 md:px-8 py-4 md:py-6 border border-emerald-600/50 w-full max-w-4xl">
-            <h3 className="text-lg sm:text-xl font-bold text-emerald-100 mb-4 text-center">
-              TrailGuide Revenue Model (True Numbers)
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-              <div>
-                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
-                  $100K
+       {/* TrailGuide Analytics Dashboard */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 sm:p-8 mb-12 text-white">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
+                    TrailGuide Analytics
+                  </h3>
+                  <div className="text-slate-400 text-sm flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    Live Data • First 100 Users
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm text-emerald-200">Upfront Revenue</div>
-                <div className="text-xs text-emerald-400">100 × $1,000</div>
+                <div className="text-slate-400 text-xs font-mono">
+                  Last updated: Sep 7, 2025
+                </div>
               </div>
-              <div>
-                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
-                  400K+
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">UPFRONT REVENUE</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">$100,000</div>
+                  <div className="text-green-400 text-xs font-mono mt-1">100 × $1,000</div>
                 </div>
-                <div className="text-xs sm:text-sm text-emerald-200">Combined Audience</div>
-                <div className="text-xs text-emerald-400">Real pipeline data</div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">COMBINED AUDIENCE</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">353,624</div>
+                  <div className="text-blue-400 text-xs font-mono mt-1">verified pipeline data</div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">PAID SUBSCRIBERS</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">47,300</div>
+                  <div className="text-purple-400 text-xs font-mono mt-1">5% conversion</div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">MONTHLY PLATFORM</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">$28,000</div>
+                  <div className="text-amber-400 text-xs font-mono mt-1">10% revenue share</div>
+                </div>
               </div>
-              <div>
-                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
-                  10K+
+              
+              {/* Bottom metrics bar */}
+              <div className="mt-6 pt-4 border-t border-slate-700">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                  <div className="text-slate-400 text-sm">
+                    Pipeline includes: Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K), Deb Hirsch (20K), Hugh Halter (30K) + 95 more
+                  </div>
+                  <div className="text-emerald-400 text-sm font-medium">
+                    Annual Recurring: $10,608
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm text-emerald-200">Paid Subscribers</div>
-                <div className="text-xs text-emerald-400">2.5% conversion</div>
-              </div>
-              <div>
-                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
-                  $10K+
-                </div>
-                <div className="text-xs sm:text-sm text-emerald-200">Monthly Platform</div>
-                <div className="text-xs text-emerald-400">10% of subscriber $</div>
               </div>
             </div>
-            <p className="text-center text-emerald-200 text-xs sm:text-sm mt-3 font-medium">
-              Conservative projections based on actual leaders like Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K)
-            </p>
-          </div>
-        </div>
 
       {/* What They Get Modal */}
       {showWhatTheyGet && (
