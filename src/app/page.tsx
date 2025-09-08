@@ -347,6 +347,59 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* TrailGuide Analytics Dashboard */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 sm:p-8 mb-12 text-white">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
+                    TrailGuide Analytics
+                  </h3>
+                  <div className="text-slate-400 text-sm flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    Live Data • First 100 Users
+                  </div>
+                </div>
+                <div className="text-slate-400 text-xs font-mono">
+                  Last updated: Sep 7, 2025
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">UPFRONT REVENUE</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">$100,000</div>
+                  <div className="text-green-400 text-xs font-mono mt-1">100 × $1,000</div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">COMBINED AUDIENCE</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">353,624</div>
+                  <div className="text-blue-400 text-xs font-mono mt-1">verified pipeline data</div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">PAID SUBSCRIBERS</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">8,840</div>
+                  <div className="text-purple-400 text-xs font-mono mt-1">2.5% conversion</div>
+                </div>
+                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                  <div className="text-slate-400 text-xs font-medium mb-1">MONTHLY PLATFORM</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-white">$884</div>
+                  <div className="text-amber-400 text-xs font-mono mt-1">10% revenue share</div>
+                </div>
+              </div>
+              
+              {/* Bottom metrics bar */}
+              <div className="mt-6 pt-4 border-t border-slate-700">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                  <div className="text-slate-400 text-sm">
+                    Pipeline includes: Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K), Deb Hirsch (20K), Hugh Halter (30K) + 95 more
+                  </div>
+                  <div className="text-emerald-400 text-sm font-medium">
+                    Annual Recurring: $10,608
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8 text-left">
               <div className="p-6 border border-red-200 rounded-xl">
                 <div className="text-red-600 font-bold text-lg mb-2">Agency Build</div>

@@ -276,43 +276,43 @@ const HundredUsersPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Header */}
-      <div className="relative z-10 text-center py-12">
-        <h1 className="text-4xl sm:text-6xl font-bold text-white mb-4">
+      <div className="relative z-10 text-center py-6 md:py-12 px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
           The Network Effect
         </h1>
-        <p className="text-xl text-slate-300 max-w-3xl mx-auto px-6 mb-8">
+        <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto px-2 sm:px-6 mb-6 md:mb-8">
           100 thought leaders connected, sharing knowledge, and building the future of independent publishing
         </p>
 
         {/* Action Buttons */}
-        <div className="flex justify-center gap-3 mb-8 flex-wrap">
+        <div className="flex justify-center gap-2 sm:gap-3 mb-6 md:mb-8 flex-wrap px-2">
           <button
             onClick={() => setShowWhatTheyGet(true)}
-            className="px-4 py-3 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-emerald-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+            className="px-3 sm:px-4 py-2 sm:py-3 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-emerald-800 transition-colors shadow-lg hover:shadow-xl text-xs sm:text-sm"
           >
             What They Get
           </button>
           <button
             onClick={() => setShowAboutNumbers(true)}
-            className="px-4 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+            className="px-3 sm:px-4 py-2 sm:py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl text-xs sm:text-sm"
           >
-            About The Numbers
+            About Numbers
           </button>
           <button
             onClick={() => setShowHowConnected(true)}
-            className="px-4 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+            className="px-3 sm:px-4 py-2 sm:py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors shadow-lg hover:shadow-xl text-xs sm:text-sm"
           >
-            How They're Connected
+            Connections
           </button>
           <button
             onClick={() => setShowAt1000Users(true)}
-            className="px-4 py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+            className="px-3 sm:px-4 py-2 sm:py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-colors shadow-lg hover:shadow-xl text-xs sm:text-sm"
           >
             At 1000 Users
           </button>
           <button
             onClick={() => setShowWhereWeAre(true)}
-            className="px-4 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+            className="px-3 sm:px-4 py-2 sm:py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl text-xs sm:text-sm"
           >
             Where We Are
           </button>
@@ -320,13 +320,13 @@ const HundredUsersPage = () => {
       </div>
 
       {/* Network Visualization */}
-      <div className="relative z-10 flex justify-center">
-        <svg
-          ref={svgRef}
-          width="1000"
-          height="600"
-          className="border border-slate-700 rounded-2xl bg-slate-800/20 backdrop-blur-sm"
-        >
+      <div className="relative z-10 flex justify-center px-4">
+        <div className="w-full max-w-5xl">
+          <svg
+            ref={svgRef}
+            viewBox="0 0 1000 600"
+            className="w-full h-auto border border-slate-700 rounded-2xl bg-slate-800/20 backdrop-blur-sm min-h-[300px] max-h-[600px]"
+          >
           {/* Connection Lines */}
           {users.map(user => 
             user.connections.map((connectionId: number, index: number) => {
@@ -358,6 +358,16 @@ const HundredUsersPage = () => {
             const styling = getCategoryStyling(user.category);
             return (
               <g key={user.id}>
+                {/* Touch-friendly invisible circle for mobile interaction */}
+                <circle
+                  cx={user.x}
+                  cy={user.y}
+                  r={Math.max(20, styling.size + 8)}
+                  fill="transparent"
+                  className="cursor-pointer sm:hidden"
+                  onClick={() => handleUserClick(user)}
+                />
+                
                 {/* Node Circle */}
                 <circle
                   cx={user.x}
@@ -428,105 +438,116 @@ const HundredUsersPage = () => {
             );
           })}
         </svg>
+        </div>
       </div>
 
       {/* Legend */}
-      <div className="relative z-10 flex justify-center mt-8 mb-12">
-        <div className="bg-slate-800/60 backdrop-blur-sm rounded-xl px-8 py-4 border border-slate-700">
-          <div className="flex flex-wrap items-center justify-center gap-6">
+      <div className="relative z-10 flex justify-center mt-4 md:mt-8 mb-6 md:mb-12 px-4">
+        <div className="bg-slate-800/60 backdrop-blur-sm rounded-xl px-4 sm:px-6 md:px-8 py-3 md:py-4 border border-slate-700 w-full max-w-4xl">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-amber-400 rounded-full border-2 border-white"></div>
-              <span className="text-slate-300 text-sm">Top Tier</span>
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-amber-400 rounded-full border-2 border-white"></div>
+              <span className="text-slate-300 text-xs sm:text-sm">Top Tier</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
-              <span className="text-slate-300 text-sm">Strong</span>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full border-2 border-white"></div>
+              <span className="text-slate-300 text-xs sm:text-sm">Strong</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white"></div>
-              <span className="text-slate-300 text-sm">Upper-Mid</span>
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-500 rounded-full border-2 border-white"></div>
+              <span className="text-slate-300 text-xs sm:text-sm">Upper-Mid</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-purple-500 rounded-full border-2 border-white"></div>
-              <span className="text-slate-300 text-sm">Mid</span>
+              <span className="text-slate-300 text-xs sm:text-sm">Mid</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-slate-500 rounded-full border-2 border-white"></div>
-              <span className="text-slate-300 text-sm">Emerging</span>
+              <span className="text-slate-300 text-xs sm:text-sm">Emerging</span>
             </div>
-            <div className="text-slate-400 text-sm">
-              • Outer ring = MRR • Click any node for details
+            <div className="text-slate-400 text-xs sm:text-sm text-center sm:text-left">
+              • Outer ring = MRR • Tap nodes for details
             </div>
           </div>
         </div>
       </div>
 
-        {/* Aggregate Stats */}
-        {aggregateStats && (
-          <div className="flex justify-center">
-            <div className="bg-slate-800/40 backdrop-blur-sm rounded-2xl px-8 py-6 border border-slate-700/50">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-green-400">
-                    ${(aggregateStats.totalMRR / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Total MRR</div>
+        {/* TrailGuide Business Stats */}
+        <div className="flex justify-center px-4 mb-8">
+          <div className="bg-emerald-900/80 backdrop-blur-sm rounded-2xl px-4 sm:px-6 md:px-8 py-4 md:py-6 border border-emerald-600/50 w-full max-w-4xl">
+            <h3 className="text-lg sm:text-xl font-bold text-emerald-100 mb-4 text-center">
+              TrailGuide Revenue Model (True Numbers)
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+              <div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
+                  $100K
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-400">
-                    {(aggregateStats.totalSubscribers / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Paid Subscribers</div>
+                <div className="text-xs sm:text-sm text-emerald-200">Upfront Revenue</div>
+                <div className="text-xs text-emerald-400">100 × $1,000</div>
+              </div>
+              <div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
+                  400K+
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-400">
-                    {(aggregateStats.totalAudience / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Total Audience</div>
+                <div className="text-xs sm:text-sm text-emerald-200">Combined Audience</div>
+                <div className="text-xs text-emerald-400">Real pipeline data</div>
+              </div>
+              <div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
+                  10K+
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-amber-400">
-                    {(aggregateStats.categories['Core Movement Leader'] || 0) + (aggregateStats.categories['Established Author'] || 0)}
-                  </div>
-                  <div className="text-sm text-slate-400">Top Leaders</div>
+                <div className="text-xs sm:text-sm text-emerald-200">Paid Subscribers</div>
+                <div className="text-xs text-emerald-400">2.5% conversion</div>
+              </div>
+              <div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-300">
+                  $10K+
                 </div>
+                <div className="text-xs sm:text-sm text-emerald-200">Monthly Platform</div>
+                <div className="text-xs text-emerald-400">10% of subscriber $</div>
               </div>
             </div>
+            <p className="text-center text-emerald-200 text-xs sm:text-sm mt-3 font-medium">
+              Conservative projections based on actual leaders like Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K)
+            </p>
           </div>
-        )}
+        </div>
 
       {/* What They Get Modal */}
       {showWhatTheyGet && (
         <div 
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setShowWhatTheyGet(false)}
         >
           <div 
-            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
-              <div className="flex justify-between items-center">
-                <h2 className="text-3xl font-bold text-slate-900">What You Get for $1,000 + 10%</h2>
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-t-2xl">
+              <div className="flex justify-between items-start gap-4">
+                <div className="flex-1">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 leading-tight">What You Get for $1,000 + 10%</h2>
+                  <p className="text-slate-600 mt-2 sm:mt-3 text-sm sm:text-base md:text-lg">
+                    Joining this network is not simply buying a website — it's investing in a complete digital publishing operating system, purpose-built for movement leaders.
+                  </p>
+                </div>
                 <button
                   onClick={() => setShowWhatTheyGet(false)}
-                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                  className="text-slate-400 hover:text-slate-600 text-2xl sm:text-3xl leading-none flex-shrink-0 p-1"
                 >
                   ×
                 </button>
               </div>
-              <p className="text-slate-600 mt-3 text-lg">
-                Joining this network is not simply buying a website — it's investing in a complete digital publishing operating system, purpose-built for movement leaders.
-              </p>
             </div>
 
             {/* Content */}
-            <div className="px-8 py-6 space-y-8">
+            <div className="px-4 sm:px-6 md:px-8 py-4 md:py-6 space-y-6 md:space-y-8">
               
               {/* Digital Publishing Platform */}
               <section>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4 flex items-center gap-2 md:gap-3">
                   <span className="text-emerald-600">🚀</span>
                   A Digital Publishing Platform
                 </h3>
@@ -654,14 +675,14 @@ const HundredUsersPage = () => {
             </div>
 
             {/* Footer */}
-            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
-              <div className="flex justify-between items-center">
-                <div className="text-slate-600">
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-b-2xl">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+                <div className="text-slate-600 text-sm sm:text-base text-center sm:text-left">
                   <span className="font-semibold">Investment:</span> $1,000 setup + 10% platform fee
                 </div>
                 <button
                   onClick={() => setShowWhatTheyGet(false)}
-                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                  className="px-4 sm:px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors text-sm sm:text-base"
                 >
                   Got It
                 </button>
@@ -674,20 +695,22 @@ const HundredUsersPage = () => {
       {/* About The Numbers Modal */}
       {showAboutNumbers && (
         <div 
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setShowAboutNumbers(false)}
         >
           <div 
-            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
-              <div className="flex justify-between items-center">
-                <h2 className="text-3xl font-bold text-slate-900">The Story of the Numbers</h2>
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-t-2xl">
+              <div className="flex justify-between items-start gap-4">
+                <div className="flex-1">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 leading-tight">The Story of the Numbers</h2>
+                </div>
                 <button
                   onClick={() => setShowAboutNumbers(false)}
-                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                  className="text-slate-400 hover:text-slate-600 text-2xl sm:text-3xl leading-none flex-shrink-0 p-1"
                 >
                   ×
                 </button>
@@ -701,11 +724,11 @@ const HundredUsersPage = () => {
             </div>
 
             {/* Content */}
-            <div className="px-8 py-6 space-y-8">
+            <div className="px-4 sm:px-6 md:px-8 py-4 md:py-6 space-y-6 md:space-y-8">
               
               {/* The First 100 */}
               <section>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4 flex items-center gap-2 md:gap-3">
                   <span className="text-emerald-700">💯</span>
                   The First 100: Proof of Concept
                 </h3>
@@ -789,14 +812,14 @@ const HundredUsersPage = () => {
             </div>
 
             {/* Footer */}
-            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
-              <div className="flex justify-between items-center">
-                <div className="text-slate-600">
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-b-2xl">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+                <div className="text-slate-600 text-sm sm:text-base text-center sm:text-left">
                   <span className="font-semibold">Scale trajectory:</span> 100 → 500 → 1,000 users maximum
                 </div>
                 <button
                   onClick={() => setShowAboutNumbers(false)}
-                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                  className="px-4 sm:px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors text-sm sm:text-base"
                 >
                   Got It
                 </button>
@@ -809,20 +832,22 @@ const HundredUsersPage = () => {
       {/* How They're Connected Modal */}
       {showHowConnected && (
         <div 
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setShowHowConnected(false)}
         >
           <div 
-            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
-              <div className="flex justify-between items-center">
-                <h2 className="text-3xl font-bold text-slate-900">How They're Connected</h2>
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-t-2xl">
+              <div className="flex justify-between items-start gap-4">
+                <div className="flex-1">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 leading-tight">How They're Connected</h2>
+                </div>
                 <button
                   onClick={() => setShowHowConnected(false)}
-                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                  className="text-slate-400 hover:text-slate-600 text-2xl sm:text-3xl leading-none flex-shrink-0 p-1"
                 >
                   ×
                 </button>
@@ -1408,20 +1433,20 @@ const HundredUsersPage = () => {
       {/* User Detail Modal */}
       {selectedUser && (
         <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={closeModal}
         >
           <div 
-            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-100"
+            className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-100 max-h-[95vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+            <div className="flex justify-between items-start mb-4 sm:mb-6">
+              <div className="flex-1 pr-2">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-2 leading-tight">
                   {selectedUser.name}
                 </h3>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold ${
                     selectedUser.category === 'Core Movement Leader' ? 'bg-amber-100 text-amber-800' :
                     selectedUser.category === 'Established Author' ? 'bg-orange-100 text-orange-800' :
                     selectedUser.category === 'Organizational Leader' ? 'bg-blue-100 text-blue-800' :
@@ -1430,75 +1455,75 @@ const HundredUsersPage = () => {
                     selectedUser.category === 'Emerging Leader' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-pink-100 text-pink-800'
                   }`}>
-                    {getCategoryStyling(selectedUser.category).badge} {selectedUser.category}
+                    <span className="hidden sm:inline">{getCategoryStyling(selectedUser.category).badge} </span>{selectedUser.category}
                   </span>
                 </div>
-                <p className="text-slate-600 text-sm mb-2">{selectedUser.profileDescription}</p>
+                <p className="text-slate-600 text-xs sm:text-sm mb-2">{selectedUser.profileDescription}</p>
                 <div className="text-xs text-slate-500">
                   <strong>Focus:</strong> {selectedUser.contentFocus}
                 </div>
               </div>
               <button
                 onClick={closeModal}
-                className="text-slate-400 hover:text-slate-600 text-2xl leading-none"
+                className="text-slate-400 hover:text-slate-600 text-xl sm:text-2xl leading-none flex-shrink-0 p-1"
               >
                 ×
               </button>
             </div>
 
-            <div className="space-y-4 mb-6">
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Audience Size</span>
-                <span className="text-2xl font-bold text-blue-600">
+            <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Audience Size</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
                   {selectedUser.audienceSize.toLocaleString()}
                 </span>
               </div>
               
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Monthly Revenue (MRR)</span>
-                <span className="text-xl font-bold text-green-600">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Monthly Revenue (MRR)</span>
+                <span className="text-lg sm:text-xl font-bold text-green-600">
                   ${selectedUser.grossMRR.toLocaleString()}
                 </span>
               </div>
               
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Paid Subscribers</span>
-                <span className="text-xl font-bold text-purple-600">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Paid Subscribers</span>
+                <span className="text-lg sm:text-xl font-bold text-purple-600">
                   {selectedUser.paidSubs.toLocaleString()}
                 </span>
               </div>
 
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Email List Size</span>
-                <span className="text-xl font-bold text-indigo-600">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Email List Size</span>
+                <span className="text-lg sm:text-xl font-bold text-indigo-600">
                   {selectedUser.emailList.toLocaleString()}
                 </span>
               </div>
               
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Qualification</span>
-                <span className="text-sm font-medium text-slate-700">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Qualification</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-700">
                   {selectedUser.qualificationSource}
                 </span>
               </div>
               
-              <div className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                <span className="text-slate-600 font-medium">Network Connections</span>
-                <span className="text-xl font-bold text-amber-600">
+              <div className="flex justify-between items-center p-3 sm:p-4 bg-slate-50 rounded-lg">
+                <span className="text-slate-600 font-medium text-xs sm:text-sm">Network Connections</span>
+                <span className="text-lg sm:text-xl font-bold text-amber-600">
                   {selectedUser.connections.length}
                 </span>
               </div>
 
               {/* Conversion metrics */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-3 bg-green-50 rounded-lg text-center">
-                  <div className="text-lg font-bold text-green-700">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="p-2 sm:p-3 bg-green-50 rounded-lg text-center">
+                  <div className="text-sm sm:text-lg font-bold text-green-700">
                     {selectedUser.conversionRate}%
                   </div>
                   <div className="text-xs text-green-600">Conversion Rate</div>
                 </div>
-                <div className="p-3 bg-blue-50 rounded-lg text-center">
-                  <div className="text-lg font-bold text-blue-700">
+                <div className="p-2 sm:p-3 bg-blue-50 rounded-lg text-center">
+                  <div className="text-sm sm:text-lg font-bold text-blue-700">
                     ${selectedUser.monthlyARPU}
                   </div>
                   <div className="text-xs text-blue-600">Monthly ARPU</div>
@@ -1506,11 +1531,11 @@ const HundredUsersPage = () => {
               </div>
             </div>
 
-            <div className="flex space-x-3">
-              <button className="flex-1 bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+              <button className="flex-1 bg-slate-900 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors text-sm sm:text-base">
                 Connect
               </button>
-              <button className="flex-1 border border-slate-300 text-slate-700 py-3 rounded-lg font-semibold hover:bg-slate-50 transition-colors">
+              <button className="flex-1 border border-slate-300 text-slate-700 py-2 sm:py-3 rounded-lg font-semibold hover:bg-slate-50 transition-colors text-sm sm:text-base">
                 View Profile
               </button>
             </div>
@@ -1519,10 +1544,10 @@ const HundredUsersPage = () => {
       )}
 
       {/* Background Effects */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 z-0 hidden sm:block">
+        <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
     </div>
   );
