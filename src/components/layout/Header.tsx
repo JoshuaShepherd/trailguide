@@ -218,7 +218,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 z-50 focus:outline-none focus:ring-2 focus:ring-trailguide-evergreen focus:ring-offset-2 rounded-lg p-2 -m-2">
           <div className="flex items-center">
-            <span className="text-2xl font-bold text-trailguide-neutral">TrailGuide</span>
+            <span className="text-2xl font-bold text-trailguide-neutral">TrailGuide Publishing Platform</span>
             <div className="ml-1 h-2 w-2 rounded-full bg-trailguide-evergreen logo-dot"></div>
           </div>
         </Link>

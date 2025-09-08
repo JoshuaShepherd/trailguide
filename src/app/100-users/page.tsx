@@ -212,6 +212,8 @@ const HundredUsersPage = () => {
   const [showWhatTheyGet, setShowWhatTheyGet] = useState(false);
   const [showAboutNumbers, setShowAboutNumbers] = useState(false);
   const [showHowConnected, setShowHowConnected] = useState(false);
+  const [showAt1000Users, setShowAt1000Users] = useState(false);
+  const [showWhereWeAre, setShowWhereWeAre] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -269,6 +271,8 @@ const HundredUsersPage = () => {
     setSelectedUser(null);
   };
 
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Header */}
@@ -279,60 +283,38 @@ const HundredUsersPage = () => {
         <p className="text-xl text-slate-300 max-w-3xl mx-auto px-6 mb-8">
           100 thought leaders connected, sharing knowledge, and building the future of independent publishing
         </p>
-        
-        {/* Aggregate Stats */}
-        {aggregateStats && (
-          <div className="flex justify-center">
-            <div className="bg-slate-800/40 backdrop-blur-sm rounded-2xl px-8 py-6 border border-slate-700/50">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-green-400">
-                    ${(aggregateStats.totalMRR / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Total MRR</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-400">
-                    {(aggregateStats.totalSubscribers / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Paid Subscribers</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-400">
-                    {(aggregateStats.totalAudience / 1000).toFixed(0)}K
-                  </div>
-                  <div className="text-sm text-slate-400">Total Audience</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-amber-400">
-                    {(aggregateStats.categories['Core Movement Leader'] || 0) + (aggregateStats.categories['Established Author'] || 0)}
-                  </div>
-                  <div className="text-sm text-slate-400">Top Leaders</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Action Buttons */}
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex justify-center gap-3 mb-8 flex-wrap">
           <button
             onClick={() => setShowWhatTheyGet(true)}
-            className="px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-emerald-800 transition-colors shadow-lg hover:shadow-xl"
+            className="px-4 py-3 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-emerald-800 transition-colors shadow-lg hover:shadow-xl text-sm"
           >
             What They Get
           </button>
           <button
             onClick={() => setShowAboutNumbers(true)}
-            className="px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
+            className="px-4 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl text-sm"
           >
             About The Numbers
           </button>
           <button
             onClick={() => setShowHowConnected(true)}
-            className="px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors shadow-lg hover:shadow-xl"
+            className="px-4 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors shadow-lg hover:shadow-xl text-sm"
           >
             How They're Connected
+          </button>
+          <button
+            onClick={() => setShowAt1000Users(true)}
+            className="px-4 py-3 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+          >
+            At 1000 Users
+          </button>
+          <button
+            onClick={() => setShowWhereWeAre(true)}
+            className="px-4 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl text-sm"
+          >
+            Where We Are
           </button>
         </div>
       </div>
@@ -384,7 +366,7 @@ const HundredUsersPage = () => {
                   fill={styling.color}
                   stroke="white"
                   strokeWidth="2"
-                  className={`cursor-pointer transition-all duration-500 hover:scale-125 ${
+                  className={`cursor-pointer transition-all duration-300 hover:stroke-4 hover:opacity-90 ${
                     isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                   }`}
                   style={{
@@ -478,6 +460,40 @@ const HundredUsersPage = () => {
           </div>
         </div>
       </div>
+
+        {/* Aggregate Stats */}
+        {aggregateStats && (
+          <div className="flex justify-center">
+            <div className="bg-slate-800/40 backdrop-blur-sm rounded-2xl px-8 py-6 border border-slate-700/50">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-green-400">
+                    ${(aggregateStats.totalMRR / 1000).toFixed(0)}K
+                  </div>
+                  <div className="text-sm text-slate-400">Total MRR</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-blue-400">
+                    {(aggregateStats.totalSubscribers / 1000).toFixed(0)}K
+                  </div>
+                  <div className="text-sm text-slate-400">Paid Subscribers</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-purple-400">
+                    {(aggregateStats.totalAudience / 1000).toFixed(0)}K
+                  </div>
+                  <div className="text-sm text-slate-400">Total Audience</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-amber-400">
+                    {(aggregateStats.categories['Core Movement Leader'] || 0) + (aggregateStats.categories['Established Author'] || 0)}
+                  </div>
+                  <div className="text-sm text-slate-400">Top Leaders</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       {/* What They Get Modal */}
       {showWhatTheyGet && (
@@ -940,6 +956,445 @@ const HundredUsersPage = () => {
                 </div>
                 <button
                   onClick={() => setShowHowConnected(false)}
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                >
+                  Got It
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* At 1000 Users Modal */}
+      {showAt1000Users && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowAt1000Users(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-slate-900">At 1000 Users</h2>
+                <button
+                  onClick={() => setShowAt1000Users(false)}
+                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-slate-600 mt-3 text-lg">
+                The complete financial picture at full scale — 1,000 carefully curated thought leaders generating exponential value.
+              </p>
+            </div>
+
+            {/* Financial Totals Overview */}
+            <div className="px-8 py-6 bg-gradient-to-r from-amber-50 to-orange-50">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <span className="text-amber-700">💰</span>
+                Financial Totals
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <div className="text-3xl font-bold text-green-700">$3.4M</div>
+                  <div className="text-slate-600 font-medium">Onboarding Revenue</div>
+                  <div className="text-sm text-slate-500">One-time collection</div>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <div className="text-3xl font-bold text-blue-700">$54.6M</div>
+                  <div className="text-slate-600 font-medium">Total Subscription Revenue</div>
+                  <div className="text-sm text-slate-500">All users, yearly</div>
+                </div>
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <div className="text-3xl font-bold text-purple-700">$5.46M</div>
+                  <div className="text-slate-600 font-medium">TrailGuide 10% Cut</div>
+                  <div className="text-sm text-slate-500">Yearly recurring</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="px-8 py-6 space-y-8">
+              
+              {/* User Tiers Breakdown */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                  <span className="text-emerald-700">📊</span>
+                  User Tiers & Revenue Breakdown
+                </h3>
+                
+                <div className="space-y-6">
+                  {/* Early Anchors */}
+                  <div className="border-l-4 border-amber-600 bg-amber-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-amber-900 mb-3">Early Anchors (Users 1-10)</h4>
+                    <div className="grid md:grid-cols-2 gap-4 text-slate-700">
+                      <div>
+                        <div className="font-semibold">Key Leaders:</div>
+                        <div>Alan Hirsch, Brad Brisco, Tim Catchim, etc.</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Onboarding:</div>
+                        <div>$1,000 each (total: $10,000)</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Avg Subscribers:</div>
+                        <div>~1,200 each</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Annual Revenue:</div>
+                        <div>$1.44M total → $144K to TrailGuide</div>
+                      </div>
+                    </div>
+                    <p className="text-amber-800 font-medium mt-3">
+                      Anchor credibility with flagship proof points—unusually high impact for minimal cost.
+                    </p>
+                  </div>
+
+                  {/* First 100 */}
+                  <div className="border-l-4 border-green-600 bg-green-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-green-900 mb-3">First 100 (Users 11-100)</h4>
+                    <div className="grid md:grid-cols-2 gap-4 text-slate-700">
+                      <div>
+                        <div className="font-semibold">Onboarding:</div>
+                        <div>$1,000 each (total: $90,000)</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Avg Subscribers:</div>
+                        <div>~700 each</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Annual Revenue:</div>
+                        <div>$7.56M total → $756K to TrailGuide</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Strategy:</div>
+                        <div>Prove model works, build urgency</div>
+                      </div>
+                    </div>
+                    <p className="text-green-800 font-medium mt-3">
+                      Seeds the ecosystem and generates foundational recurring revenue.
+                    </p>
+                  </div>
+
+                  {/* Users 101-500 */}
+                  <div className="border-l-4 border-blue-600 bg-blue-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-blue-900 mb-3">Growth Tier (Users 101-500)</h4>
+                    <div className="grid md:grid-cols-2 gap-4 text-slate-700">
+                      <div>
+                        <div className="font-semibold">Onboarding:</div>
+                        <div>$2,000 each (total: $800,000)</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Avg Subscribers:</div>
+                        <div>~450 each</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Annual Revenue:</div>
+                        <div>$21.6M total → $2.16M to TrailGuide</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Count:</div>
+                        <div>400 users in this tier</div>
+                      </div>
+                    </div>
+                    <p className="text-blue-800 font-medium mt-3">
+                      Strong tier with proven traction—still generates massive subscription revenue.
+                    </p>
+                  </div>
+
+                  {/* Users 501-1000 */}
+                  <div className="border-l-4 border-purple-600 bg-purple-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-purple-900 mb-3">Premium Tier (Users 501-1000)</h4>
+                    <div className="grid md:grid-cols-2 gap-4 text-slate-700">
+                      <div>
+                        <div className="font-semibold">Onboarding:</div>
+                        <div>$5,000 each (total: $2.5M)</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Avg Subscribers:</div>
+                        <div>~400 each</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Annual Revenue:</div>
+                        <div>$19.2M total → $1.92M to TrailGuide</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold">Count:</div>
+                        <div>500 users in this tier</div>
+                      </div>
+                    </div>
+                    <p className="text-purple-800 font-medium mt-3">
+                      Late-wave users see proven case studies—$5K becomes a bargain vs. $50-100K agencies.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Company Position */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-slate-700">🏢</span>
+                  Company Position at 1000 Users
+                </h3>
+                
+                <div className="bg-slate-50 rounded-xl p-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-3">Revenue Streams</h4>
+                      <div className="space-y-2 text-slate-700">
+                        <div><strong>Recurring:</strong> ~$5.46M annually from subscriptions</div>
+                        <div><strong>One-time:</strong> ~$3.4M total onboarding collected</div>
+                        <div><strong>Potential:</strong> Consulting/upsell opportunities</div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-3">Valuation Estimate</h4>
+                      <div className="space-y-2 text-slate-700">
+                        <div><strong>Conservative SaaS Multiple:</strong> 8-10x recurring</div>
+                        <div><strong>Estimated Valuation:</strong> $43-55M</div>
+                        <div><strong>Assumption:</strong> No expansion beyond 1,000 users</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Why This Story Is Credible */}
+              <section className="bg-emerald-50 rounded-xl p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">✅</span>
+                  Why This Story Is Credible
+                </h3>
+                <div className="space-y-4 text-slate-700">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-emerald-800">1.</span>
+                    <span>You've priced the early adopters into an urgent opportunity.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-emerald-800">2.</span>
+                    <span>Later users, seeing the traction and case studies, will perceive $5,000 as a bargain compared to agencies charging $50–100K.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-emerald-800">3.</span>
+                    <span>Subscription flows (473 avg per user, $10/mo) are not inflated—they are in line with realistic audience capture rates in the thought leader / nonprofit market.</span>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-emerald-600">
+                  <p className="text-lg font-semibold text-slate-900">The math is conservative.</p>
+                  <p className="text-lg font-semibold text-emerald-700">The strategy is proven.</p>
+                  <p className="text-lg font-semibold text-slate-700">The market is ready.</p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
+              <div className="flex justify-between items-center">
+                <div className="text-slate-600">
+                  <span className="font-semibold">At scale:</span> $5.46M recurring + $3.4M onboarding = $43-55M valuation
+                </div>
+                <button
+                  onClick={() => setShowAt1000Users(false)}
+                  className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
+                >
+                  Got It
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Where We Are Modal */}
+      {showWhereWeAre && (
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowWhereWeAre(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 rounded-t-2xl">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-slate-900">Where We Are Now</h2>
+                <button
+                  onClick={() => setShowWhereWeAre(false)}
+                  className="text-slate-400 hover:text-slate-600 text-3xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-slate-600 mt-3 text-lg font-medium">
+                September 2025 — Two weeks from launch with live exemplars
+              </p>
+            </div>
+
+            {/* Content */}
+            <div className="px-8 py-6 space-y-8">
+              
+              {/* Launch Status */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-blue-700">🚀</span>
+                  Launch Ready
+                </h3>
+                <p className="text-slate-700 mb-4">You are two weeks from launch with your first live exemplars:</p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <h4 className="font-bold text-blue-900 mb-2">Confirmed Leaders</h4>
+                    <ul className="text-blue-800 space-y-1">
+                      <li>• Alan Hirsch</li>
+                      <li>• Brad Brisco</li>
+                      <li>• Likely Tim Catchim</li>
+                      <li>• Josh Shepherd (lived example)</li>
+                    </ul>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-4">
+                    <h4 className="font-bold text-green-900 mb-2">Tech Stack Ready</h4>
+                    <p className="text-green-800 text-sm">Next.js, React, Tailwind, ShadCN, Supabase, Stripe, OpenAI Agents SDK, Vercel — all in place and functioning.</p>
+                    <p className="text-green-700 font-medium mt-2">Templates ready for rapid deployment.</p>
+                  </div>
+                </div>
+                <div className="mt-4 p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-600">
+                  <p className="text-emerald-800"><strong>Unique positioning:</strong> Agency-level builds ($50k–100k) for $1,000 + 10% — differentiated and urgent.</p>
+                </div>
+              </section>
+
+              {/* Road to 100 */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-green-700">📈</span>
+                  The Road to 100 Users
+                </h3>
+                <p className="text-slate-700 mb-4">Getting to 100 users is about nailing the first cohort with credibility, demonstration, and repeatability.</p>
+                
+                <div className="space-y-4">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-700 text-lg">1.</span>
+                    <div>
+                      <strong>October 1 Launch:</strong> Deliver 3–5 sites that are polished enough to impress and Behance-worthy.
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-700 text-lg">2.</span>
+                    <div>
+                      <strong>Immediate Case Studies:</strong> Each user's platform doubles as both their publishing base and your marketing engine.
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-700 text-lg">3.</span>
+                    <div>
+                      <strong>Network Leverage:</strong> Push through MLC, 5Q, Brisco/Hirsch connections with a clear funnel.
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-700 text-lg">4.</span>
+                    <div>
+                      <strong>Drive Urgency:</strong> Emphasize exclusivity—only 100 slots at this price tier.
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-700 text-lg">5.</span>
+                    <div>
+                      <strong>Systematize Intake:</strong> Simple, rapid, consistent onramp for the "prototype experience."
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* The Threats */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-red-600">⚠️</span>
+                  The Threats
+                </h3>
+                
+                <div className="space-y-6">
+                  <div className="border-l-4 border-red-500 bg-red-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-red-900 mb-3">1. Clarity vs. Confusion</h4>
+                    <div className="text-red-800 space-y-2">
+                      <p>The "dual doors" problem (thought leaders vs nonprofits) risks muddying the launch.</p>
+                      <p><strong>Solution:</strong> One Door at Launch. Funnel all attention to the thought-leader network until momentum makes clarity self-evident.</p>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-orange-500 bg-orange-50 rounded-lg p-6">
+                    <h4 className="text-xl font-bold text-orange-900 mb-3">2. Customization vs. Consistency</h4>
+                    <div className="text-orange-800 space-y-2">
+                      <p>Death by bespoke customization — if every early adopter expects unique work, the system bogs down.</p>
+                      <p><strong>Solution:</strong> Design guardrails now. Users buy into a tested "best practice shell," not a blank canvas.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Core Execution Risk */}
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-purple-700">🎯</span>
+                  The Core Execution Risk
+                </h3>
+                <div className="bg-purple-50 rounded-lg p-6">
+                  <p className="text-purple-800 mb-4"><strong>The main threat is focus:</strong></p>
+                  <div className="space-y-2 text-purple-700">
+                    <p>• Too much focus on prototypes → you neglect building the network glue.</p>
+                    <p>• Too much focus on network → the prototypes feel thin and underwhelming.</p>
+                  </div>
+                  <p className="text-purple-900 font-medium mt-4">
+                    <strong>The tightrope:</strong> Make every first user a glowing proof point AND ensure they feel part of something larger than themselves.
+                  </p>
+                </div>
+              </section>
+
+              {/* The Playbook */}
+              <section className="bg-slate-50 rounded-xl p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                  <span className="text-emerald-700">📋</span>
+                  The Playbook to 100
+                </h3>
+                <div className="space-y-4 text-slate-700">
+                  <div className="flex gap-3">
+                    <strong className="text-emerald-700">October 1 Launch:</strong>
+                    <span>Deliver 3–5 sites that look Behance-worthy and demonstrate the entire value chain.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <strong className="text-green-700">Oct–Dec 2025:</strong>
+                    <span>Turn those into case studies + social proof, funneling through Alan and Brad's credibility.</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <strong className="text-blue-700">Q1 2026:</strong>
+                    <span>Lock down intake processes and keep the story single-threaded ("100 seats at $1,000 + 10%").</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <strong className="text-purple-700">Mid-2026:</strong>
+                    <span>Fill the first 100 through network pull, urgency, and clarity of offer.</span>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-emerald-600">
+                  <p className="text-lg font-semibold text-slate-900">✅ If you execute this with clarity and consistency...</p>
+                  <p className="text-lg font-semibold text-emerald-700">100 users is not just feasible—it's inevitable given the names and momentum already on board.</p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Footer */}
+            <div className="sticky bottom-0 bg-white border-t border-slate-200 px-8 py-6 rounded-b-2xl">
+              <div className="flex justify-between items-center">
+                <div className="text-slate-600">
+                  <span className="font-semibold">Timeline:</span> October 2025 launch → 100 users by mid-2026
+                </div>
+                <button
+                  onClick={() => setShowWhereWeAre(false)}
                   className="px-6 py-2 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition-colors"
                 >
                   Got It
