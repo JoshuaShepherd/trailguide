@@ -1,474 +1,294 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { BookOpen, Users, Target, Zap, TrendingUp, Award, ArrowRight, CheckCircle, Play, Download, Calendar, Star, Quote } from 'lucide-react';
 import Link from 'next/link';
 
-export default function HomePage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Hero Image/Abstract Visual */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-stone-50 to-amber-50"></div>
-          {/* Abstract trail/map visualization */}
-          <div className="absolute inset-0 opacity-10">
-            <svg viewBox="0 0 1200 800" className="w-full h-full">
-              <path
-                d="M 100 600 Q 300 400 500 450 T 900 300 Q 1000 250 1100 200"
-                stroke="currentColor"
-                strokeWidth="3"
-                fill="none"
-                className="text-stone-400"
-                strokeDasharray="20,10"
-              />
-              <path
-                d="M 200 700 Q 400 500 600 550 T 1000 400"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                className="text-amber-400"
-                strokeDasharray="15,8"
-              />
-            </svg>
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-8 leading-tight tracking-tight">
-              Own Your Publishing.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">
-                Keep 90%.
-              </span><br />
-              Launch in Weeks.
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50 py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
+              <Zap className="w-4 h-4 mr-2" />
+              Expert Publisher Platform Demo
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Transform Your Expertise Into 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600"> Digital Authority</span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-slate-600 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              A six-figure digital publishing stack, custom-built for thought leaders — yours for <strong>$1,000 + 10%</strong>.
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              This is a live demonstration of our Expert Publisher platform—showcasing exactly what your complete digital presence, content engine, and monetization stack will look like when you launch with us.
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <Link href="/products/membership" className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Explore Membership
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <Link href="/about" className="inline-flex items-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-400 transition-colors">
+                See How It Works
+                <Play className="w-5 h-5 ml-2" />
+              </Link>
+            </div>
+            
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-500">
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                AI-Enhanced Content Creation
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                Multi-Format Publishing
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                Integrated Monetization
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-              <button className="bg-slate-900 text-white px-12 py-4 rounded-full text-lg font-semibold hover:bg-slate-800 transform hover:scale-105 transition-all duration-200 shadow-lg">
-                Start Your Platform
-              </button>
-              <Link
-                href="#examples"
-                className="text-slate-600 hover:text-slate-900 text-lg font-medium underline underline-offset-4 transition-colors"
-              >
-                See Examples
+      {/* Value Proposition Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Everything You Need to Build Digital Authority
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                This template demonstrates our complete Expert Publisher ecosystem—from content creation to monetization. Every feature you see here is what you get.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                  <BookOpen className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Content Engine</h3>
+                <p className="text-gray-600 mb-6">AI-powered content creation across blog posts, podcasts, videos, newsletters, and social media—all from your core expertise.</p>
+                <Link href="/blog" className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center">
+                  See Blog Examples <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+              
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                  <Users className="w-6 h-6 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Audience Building</h3>
+                <p className="text-gray-600 mb-6">Integrated newsletter, membership tiers, and community features that turn readers into paying customers automatically.</p>
+                <Link href="/newsletter" className="text-orange-600 font-medium hover:text-orange-700 inline-flex items-center">
+                  View Newsletter <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+              
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                  <TrendingUp className="w-6 h-6 text-green-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Monetization Stack</h3>
+                <p className="text-gray-600 mb-6">Courses, coaching, speaking, consulting, and premium content—all integrated into your publishing workflow.</p>
+                <Link href="/products" className="text-green-600 font-medium hover:text-green-700 inline-flex items-center">
+                  Explore Products <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Content Preview */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Insights</h2>
+                <p className="text-xl text-gray-600">Real examples of the content this platform helps you create</p>
+              </div>
+              <Link href="/blog" className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center">
+                View All Articles <ArrowRight className="w-4 h-4 ml-1" />
+              </Link>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Featured Articles */}
+              <article className="group cursor-pointer">
+                <Link href="/blog/board-ready-ai-reports-template">
+                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <Target className="w-12 h-12 text-blue-600" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-sm text-blue-600 font-medium">Strategic Planning</div>
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      Board-Ready AI Reports Template
+                    </h3>
+                    <p className="text-gray-600">
+                      Transform complex AI initiatives into executive-ready presentations that drive decision-making.
+                    </p>
+                  </div>
+                </Link>
+              </article>
+              
+              <article className="group cursor-pointer">
+                <Link href="/blog/nonprofit-grant-sprint-guide">
+                  <div className="aspect-video bg-gradient-to-br from-green-100 to-green-200 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <Award className="w-12 h-12 text-green-600" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-sm text-green-600 font-medium">Nonprofit Leadership</div>
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                      Nonprofit Grant Sprint Guide
+                    </h3>
+                    <p className="text-gray-600">
+                      A systematic approach to securing funding through strategic grant writing and relationship building.
+                    </p>
+                  </div>
+                </Link>
+              </article>
+              
+              <article className="group cursor-pointer">
+                <Link href="/blog/orientation-first-ai-journey">
+                  <div className="aspect-video bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <Zap className="w-12 h-12 text-orange-600" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-sm text-orange-600 font-medium">AI Implementation</div>
+                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">
+                      Orientation-First AI Journey
+                    </h3>
+                    <p className="text-gray-600">
+                      Begin your AI transformation with human-centered orientation before diving into technology solutions.
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products & Offerings Preview */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Monetization That Works
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                See how the Expert Publisher platform transforms your expertise into multiple revenue streams
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Link href="/products/membership" className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Users className="w-5 h-5 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Membership</h3>
+                <p className="text-sm text-gray-600">Premium content and community access</p>
+                <div className="text-blue-600 text-sm font-medium mt-3">From $29/month</div>
+              </Link>
+              
+              <Link href="/products/courses" className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-5 h-5 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Courses</h3>
+                <p className="text-sm text-gray-600">Deep-dive learning experiences</p>
+                <div className="text-green-600 text-sm font-medium mt-3">$497-$2,997</div>
+              </Link>
+              
+              <Link href="/products/workshops" className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Calendar className="w-5 h-5 text-orange-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Workshops</h3>
+                <p className="text-sm text-gray-600">Interactive group sessions</p>
+                <div className="text-orange-600 text-sm font-medium mt-3">$197-$997</div>
+              </Link>
+              
+              <Link href="/products/consulting" className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Target className="w-5 h-5 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Consulting</h3>
+                <p className="text-sm text-gray-600">1:1 strategic guidance</p>
+                <div className="text-purple-600 text-sm font-medium mt-3">$500-$2,000/hr</div>
               </Link>
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-slate-400 rounded-full mt-2"></div>
-          </div>
-        </div>
       </section>
 
-      {/* Why Publishing Is Broken */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
-              Publishing is Broken
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                85% of royalties go to publishers.
-              </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Traditional publishers take the lion's share while you do all the work. 
-                Your ideas, your audience, their profit.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                Slow, print-first formats.
-              </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                18-month publishing cycles in a digital-first world. 
-                By the time your book hits shelves, the conversation has moved on.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                Disconnected from your audience.
-              </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Publishers own your reader relationships. You never know who's actually 
-                engaging with your work or how to reach them directly.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The TrailGuide Solution */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Dashboard Mockup */}
-            <div className="order-2 lg:order-1">
-              <div className="relative">
-                {/* Dashboard Frame */}
-                <div className="bg-slate-900 rounded-2xl p-6 shadow-2xl">
-                  <div className="flex items-center mb-4">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="ml-4 text-slate-400 text-sm">author.trailguide.com</div>
-                  </div>
-                  
-                  {/* Dashboard Content */}
-                  <div className="bg-white rounded-lg p-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-xl font-bold text-slate-900">Your Publishing Dashboard</h3>
-                      <div className="text-green-600 font-semibold">$12,847 this month</div>
-                    </div>
-                    
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <div className="text-2xl font-bold text-slate-900">2,847</div>
-                        <div className="text-slate-600 text-sm">Active Subscribers</div>
-                      </div>
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <div className="text-2xl font-bold text-slate-900">94%</div>
-                        <div className="text-slate-600 text-sm">Revenue Retention</div>
-                      </div>
-                      <div className="bg-slate-50 p-4 rounded-lg">
-                        <div className="text-2xl font-bold text-slate-900">47</div>
-                        <div className="text-slate-600 text-sm">Articles Published</div>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded">
-                        <span className="text-slate-700">New Course: "Leadership in Crisis"</span>
-                        <span className="text-green-600 font-semibold">$847</span>
-                      </div>
-                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded">
-                        <span className="text-slate-700">Premium Subscription</span>
-                        <span className="text-green-600 font-semibold">$2,940</span>
-                      </div>
-                      <div className="flex items-center justify-between p-3 bg-slate-50 rounded">
-                        <span className="text-slate-700">Speaking Event Bookings</span>
-                        <span className="text-green-600 font-semibold">$9,060</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Solution Text */}
-            <div className="order-1 lg:order-2">
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Your Platform.<br />
-                Your Audience.<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600">
-                  Your Revenue.
-                </span>
+      {/* Social Proof & Results */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Platform Success Stories
               </h2>
-              
-              <div className="space-y-6 text-lg text-slate-600 mb-8">
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>Custom publishing website</strong> (Next.js, Tailwind, Supabase, Vercel)
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>AI writing and content support agents</strong>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>Paywall + subscriptions</strong> (Stripe integration)
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>SEO, email capture, analytics</strong> baked in
-                  </div>
-                </div>
-              </div>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Real results from experts using this exact platform architecture
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Examples / Case Studies */}
-      <section id="examples" className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
-              See It In Action
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Thought leaders already using TrailGuide to own their publishing and keep 90%+ of their revenue.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Alan Hirsch */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <div className="text-3xl font-bold mb-2">AH</div>
-                  <div className="text-sm opacity-80">Author Platform</div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Alan Hirsch</h3>
-                <p className="text-slate-600 mb-4">Missional leadership author and thought leader</p>
-                <Link 
-                  href="/alan-hirsch-platform" 
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                >
-                  See Live Example →
-                </Link>
-              </div>
-            </div>
-
-            {/* Brad Briscoe */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <div className="text-3xl font-bold mb-2">BB</div>
-                  <div className="text-sm opacity-80">Author Platform</div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Brad Briscoe</h3>
-                <p className="text-slate-600 mb-4">Church planting strategist and author</p>
-                <Link 
-                  href="/brad-brisco-platform" 
-                  className="text-green-600 font-semibold hover:text-green-700 transition-colors"
-                >
-                  See Live Example →
-                </Link>
-              </div>
-            </div>
-
-            {/* Tim Catchim */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <div className="text-3xl font-bold mb-2">TC</div>
-                  <div className="text-sm opacity-80">Author Platform</div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Tim Catchim</h3>
-                <p className="text-slate-600 mb-4">Leadership development and organizational culture</p>
-                <Link 
-                  href="/tim-catchim-platform" 
-                  className="text-orange-600 font-semibold hover:text-orange-700 transition-colors"
-                >
-                  See Live Example →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-8">
-              Transparent. Simple. Fair.
-            </h2>
             
-            <div className="bg-slate-900 text-white rounded-3xl p-12 mb-12">
-              <div className="text-6xl font-bold mb-4">$1,000</div>
-              <div className="text-2xl mb-2">Setup</div>
-              <div className="text-4xl font-bold mb-4">+ 10%</div>
-              <div className="text-2xl mb-6">of Earnings</div>
-              <div className="text-slate-300 text-lg">
-                That's it. No hidden fees. No monthly SaaS bills. No agency retainers.
-              </div>
-            </div>
-
-            {/* TrailGuide Analytics Dashboard */}
-            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 sm:p-8 mb-12 text-white">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
-                    TrailGuide Analytics
-                  </h3>
-                  <div className="text-slate-400 text-sm flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    Live Data • First 100 Users
-                  </div>
-                </div>
-                <div className="text-slate-400 text-xs font-mono">
-                  Last updated: Sep 7, 2025
-                </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">15,000+</div>
+                <div className="text-gray-600">Newsletter Subscribers</div>
+                <div className="text-sm text-gray-500 mt-1">Average in 12 months</div>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                  <div className="text-slate-400 text-xs font-medium mb-1">UPFRONT REVENUE</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">$100,000</div>
-                  <div className="text-green-400 text-xs font-mono mt-1">100 × $1,000</div>
-                </div>
-                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                  <div className="text-slate-400 text-xs font-medium mb-1">COMBINED AUDIENCE</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">353,624</div>
-                  <div className="text-blue-400 text-xs font-mono mt-1">verified pipeline data</div>
-                </div>
-                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                  <div className="text-slate-400 text-xs font-medium mb-1">PAID SUBSCRIBERS</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">8,840</div>
-                  <div className="text-purple-400 text-xs font-mono mt-1">2.5% conversion</div>
-                </div>
-                <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                  <div className="text-slate-400 text-xs font-medium mb-1">MONTHLY PLATFORM</div>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">$884</div>
-                  <div className="text-amber-400 text-xs font-mono mt-1">10% revenue share</div>
-                </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-green-600 mb-2">$150K+</div>
+                <div className="text-gray-600">Annual Revenue</div>
+                <div className="text-sm text-gray-500 mt-1">From digital products</div>
               </div>
               
-              {/* Bottom metrics bar */}
-              <div className="mt-6 pt-4 border-t border-slate-700">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                  <div className="text-slate-400 text-sm">
-                    Pipeline includes: Alan Hirsch (50K), Brad Brisco (25K), Tim Catchim (15K), Deb Hirsch (20K), Hugh Halter (30K) + 95 more
-                  </div>
-                  <div className="text-emerald-400 text-sm font-medium">
-                    Annual Recurring: $10,608
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 text-left">
-              <div className="p-6 border border-red-200 rounded-xl">
-                <div className="text-red-600 font-bold text-lg mb-2">Agency Build</div>
-                <div className="text-3xl font-bold text-slate-900 mb-2">$100,000+</div>
-                <div className="text-slate-600">upfront</div>
-                <div className="mt-4 text-sm text-slate-500">
-                  Plus months of back-and-forth, change orders, and ongoing maintenance fees.
-                </div>
-              </div>
-
-              <div className="p-6 border border-orange-200 rounded-xl">
-                <div className="text-orange-600 font-bold text-lg mb-2">DIY SaaS</div>
-                <div className="text-3xl font-bold text-slate-900 mb-2">$500-1,000</div>
-                <div className="text-slate-600">per month forever</div>
-                <div className="mt-4 text-sm text-slate-500">
-                  Multiple subscriptions, integration headaches, and you still build it yourself.
-                </div>
-              </div>
-
-              <div className="p-6 border-2 border-green-500 rounded-xl bg-green-50">
-                <div className="text-green-600 font-bold text-lg mb-2">TrailGuide</div>
-                <div className="text-3xl font-bold text-slate-900 mb-2">$1,000 + 10%</div>
-                <div className="text-slate-600">that's it</div>
-                <div className="mt-4 text-sm text-slate-500">
-                  Built in weeks. You own the code. We succeed when you succeed.
-                </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-orange-600 mb-2">85%</div>
+                <div className="text-gray-600">Content Automation</div>
+                <div className="text-sm text-gray-500 mt-1">Time saved on production</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-8">
-            Ready to Own Your Platform?
-          </h2>
-          <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-            Join the first 100 thought leaders shaping the future of publishing.
-          </p>
-          <button className="bg-white text-slate-900 px-12 py-4 rounded-full text-xl font-semibold hover:bg-slate-100 transform hover:scale-105 transition-all duration-200 shadow-lg mb-6">
-            Get Started Today
-          </button>
-          <p className="text-slate-400 text-lg">
-            Join the first 100 thought leaders shaping the future of publishing.
-          </p>
+      {/* CTA Section */}
+      <section className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Ready to Build Your Expert Authority?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              This demonstration shows exactly what you'll get. Every feature, every integration, every monetization tool—ready to launch with your expertise.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/products/membership" className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Start Your Platform
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <Link href="/case-studies" className="inline-flex items-center px-8 py-4 border-2 border-gray-600 text-gray-300 rounded-lg font-semibold hover:border-gray-500 transition-colors">
+                View Case Studies
+                <Download className="w-5 h-5 ml-2" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 bg-white border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <div className="text-2xl font-bold text-slate-900">TrailGuide</div>
-            </div>
-            <div className="flex space-x-8">
-              <Link href="/about" className="text-slate-600 hover:text-slate-900 transition-colors">About</Link>
-              <Link href="#examples" className="text-slate-600 hover:text-slate-900 transition-colors">Examples</Link>
-              <Link href="#pricing" className="text-slate-600 hover:text-slate-900 transition-colors">Pricing</Link>
-              <Link href="/contact" className="text-slate-600 hover:text-slate-900 transition-colors">Contact</Link>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-slate-200 text-center text-slate-500">
-            Copyright TrailGuide © 2025
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

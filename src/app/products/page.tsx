@@ -1,396 +1,408 @@
+import React from 'react';
+import { Users, BookOpen, Calendar, Target, Star, CheckCircle, ArrowRight, TrendingUp, Award, Zap, Rocket, Crown, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, Calendar, Mic, Video, Award, Crown, Star, TrendingUp, Target, Zap } from 'lucide-react';
 
 export default function Products() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Demo Notice */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-center text-white">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-center gap-2 text-sm font-medium">
-            <Crown className="h-4 w-4" />
-            <span>🎯 DEMO: Complete Monetization Stack - All Revenue Streams in One Platform</span>
-            <Crown className="h-4 w-4" />
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-sm text-trailguide-evergreen bg-trailguide-evergreen/5 px-4 py-2 rounded-full mb-6">
-            <Target className="h-4 w-4" />
-            <span>Expert Publisher Platform Demo</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-trailguide-neutral mb-6">
-            Complete <span className="text-trailguide-evergreen">Monetization Stack</span>
-          </h1>
-          
-          <p className="text-xl text-trailguide-slate max-w-3xl mx-auto">
-            See how thought leaders create multiple revenue streams through our integrated platform. 
-            Every feature you see here is included in your Expert Publisher setup.
-          </p>
-        </div>
-
-        {/* Membership Tiers */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Membership Community</h2>
-            <p className="text-trailguide-slate max-w-2xl mx-auto">
-              Build recurring revenue with tiered memberships that provide ongoing value to your audience.
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-blue-50 py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Complete Monetization Suite
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Transform Expertise Into
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600"> Sustainable Revenue</span>
+            </h1>
+            
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              This template showcases the complete range of monetization options built into every Expert Publisher platform—from membership communities to high-value consulting.
             </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/products/membership" className="inline-flex items-center px-8 py-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                Explore Membership
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <Link href="#revenue-calculator" className="inline-flex items-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-400 transition-colors">
+                Calculate Revenue Potential
+              </Link>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="relative border-2 border-trailguide-slate/20">
-              <CardHeader className="text-center pb-8">
-                <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-trailguide-evergreen" />
+      {/* Product Categories Overview */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Multiple Revenue Streams, One Platform
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Every Expert Publisher platform includes these proven monetization pathways, fully integrated and optimized for conversion
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Membership & Community */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Membership & Community</h3>
+                    <div className="text-blue-700 font-medium">$29-$297/month recurring</div>
+                  </div>
                 </div>
-                <CardTitle className="text-2xl">Community</CardTitle>
-                <CardDescription className="text-trailguide-slate">For engaged followers</CardDescription>
-                <div className="text-3xl font-bold text-trailguide-neutral mt-4">
-                  $29<span className="text-lg font-normal text-trailguide-slate">/month</span>
+                <p className="text-gray-700 mb-6">Premium content, exclusive community access, and tiered benefits that scale with your audience growth.</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Tiered membership levels</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Private community forums</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Exclusive content library</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Monthly member events</span>
+                  </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Weekly exclusive content
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Community discussion access
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Monthly Q&A sessions
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Resource library access
-                  </li>
-                </ul>
-                <Button className="w-full mt-6">Join Community</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="relative border-2 border-trailguide-evergreen shadow-lg">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-trailguide-evergreen text-white px-4 py-1 rounded-full text-sm font-medium">
-                  Most Popular
-                </span>
+                <Link href="/products/membership" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
+                  Explore Membership <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
               </div>
-              <CardHeader className="text-center pb-8">
-                <div className="w-12 h-12 bg-trailguide-evergreen/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="h-6 w-6 text-trailguide-evergreen" />
-                </div>
-                <CardTitle className="text-2xl">Inner Circle</CardTitle>
-                <CardDescription className="text-trailguide-slate">For serious practitioners</CardDescription>
-                <div className="text-3xl font-bold text-trailguide-neutral mt-4">
-                  $97<span className="text-lg font-normal text-trailguide-slate">/month</span>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Everything in Community
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Weekly group coaching calls
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Premium course library
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Direct access to expert
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Implementation templates
-                  </li>
-                </ul>
-                <Button className="w-full mt-6 bg-trailguide-evergreen hover:bg-trailguide-evergreen/90">
-                  Join Inner Circle
-                </Button>
-              </CardContent>
-            </Card>
 
-            <Card className="relative border-2 border-trailguide-slate/20">
-              <CardHeader className="text-center pb-8">
-                <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Crown className="h-6 w-6 text-trailguide-evergreen" />
-                </div>
-                <CardTitle className="text-2xl">Mastermind</CardTitle>
-                <CardDescription className="text-trailguide-slate">For transformation leaders</CardDescription>
-                <div className="text-3xl font-bold text-trailguide-neutral mt-4">
-                  $297<span className="text-lg font-normal text-trailguide-slate">/month</span>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Everything in Inner Circle
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Monthly 1:1 strategy sessions
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Exclusive mastermind events
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Business growth blueprints
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-trailguide-evergreen" />
-                    Personal brand audit
-                  </li>
-                </ul>
-                <Button className="w-full mt-6" variant="outline">Join Mastermind</Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Courses & Programs */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Signature Courses</h2>
-            <p className="text-trailguide-slate max-w-2xl mx-auto">
-              Transform your expertise into scalable educational products that generate recurring revenue.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="border-2 border-trailguide-slate/20 hover:border-trailguide-evergreen/50 transition-colors">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center">
-                    <BookOpen className="h-6 w-6 text-trailguide-evergreen" />
-                  </div>
-                  <span className="text-2xl font-bold text-trailguide-neutral">$497</span>
-                </div>
-                <CardTitle className="text-xl">Authority Blueprint</CardTitle>
-                <CardDescription>Master the fundamentals of thought leadership and content strategy</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-trailguide-slate mb-6">
-                  <li>• 8 comprehensive modules</li>
-                  <li>• 40+ video lessons</li>
-                  <li>• Implementation worksheets</li>
-                  <li>• Private community access</li>
-                  <li>• Lifetime updates</li>
-                </ul>
-                <Button className="w-full">Enroll Now</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-trailguide-slate/20 hover:border-trailguide-evergreen/50 transition-colors">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-trailguide-evergreen" />
-                  </div>
-                  <span className="text-2xl font-bold text-trailguide-neutral">$997</span>
-                </div>
-                <CardTitle className="text-xl">Revenue Accelerator</CardTitle>
-                <CardDescription>Build and scale multiple income streams from your expertise</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-trailguide-slate mb-6">
-                  <li>• 12 advanced modules</li>
-                  <li>• Live group coaching calls</li>
-                  <li>• Revenue tracking tools</li>
-                  <li>• Sales funnel templates</li>
-                  <li>• 6 months of support</li>
-                </ul>
-                <Button className="w-full bg-trailguide-evergreen hover:bg-trailguide-evergreen/90">
-                  Enroll Now
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Events & Workshops */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Live Events & Workshops</h2>
-            <p className="text-trailguide-slate max-w-2xl mx-auto">
-              High-value, interactive experiences that command premium pricing and build deeper connections.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="border-2 border-trailguide-slate/20">
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center">
-                    <Calendar className="h-6 w-6 text-trailguide-evergreen" />
+              {/* Courses & Learning */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                    <BookOpen className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl">Quarterly Intensive</CardTitle>
-                    <CardDescription>3-day virtual transformation workshop</CardDescription>
+                    <h3 className="text-2xl font-bold text-gray-900">Courses & Learning</h3>
+                    <div className="text-green-700 font-medium">$497-$2,997 per course</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Next Event:</span>
-                    <span className="font-semibold text-trailguide-neutral">March 15-17, 2024</span>
+                <p className="text-gray-700 mb-6">Comprehensive learning experiences that transform your expertise into structured, high-value educational products.</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Self-paced online courses</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Investment:</span>
-                    <span className="text-2xl font-bold text-trailguide-evergreen">$1,997</span>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Live cohort programs</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Spots Remaining:</span>
-                    <span className="font-semibold text-trailguide-neutral">12 / 50</span>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Certification programs</span>
                   </div>
-                  <Button className="w-full mt-6">Reserve Your Spot</Button>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Assessment & feedback tools</span>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+                <Link href="/products/courses" className="inline-flex items-center text-green-600 font-semibold hover:text-green-700">
+                  View Courses <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
 
-            <Card className="border-2 border-trailguide-slate/20">
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center">
-                    <Award className="h-6 w-6 text-trailguide-evergreen" />
+              {/* Workshops & Events */}
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mr-4">
+                    <Calendar className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl">Mastermind Retreat</CardTitle>
-                    <CardDescription>Exclusive in-person experience</CardDescription>
+                    <h3 className="text-2xl font-bold text-gray-900">Workshops & Events</h3>
+                    <div className="text-orange-700 font-medium">$197-$997 per event</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Next Retreat:</span>
-                    <span className="font-semibold text-trailguide-neutral">June 20-23, 2024</span>
+                <p className="text-gray-700 mb-6">Interactive, time-bound experiences that deliver concentrated value and create strong community connections.</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Live virtual workshops</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Investment:</span>
-                    <span className="text-2xl font-bold text-trailguide-evergreen">$4,997</span>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">In-person masterclasses</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-trailguide-slate">Limited to:</span>
-                    <span className="font-semibold text-trailguide-neutral">20 Leaders</span>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">VIP intensive days</span>
                   </div>
-                  <Button className="w-full mt-6 bg-trailguide-evergreen hover:bg-trailguide-evergreen/90">
-                    Apply Now
-                  </Button>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Speaking engagements</span>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+                <Link href="/products/workshops" className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700">
+                  Browse Events <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
 
-        {/* Speaking & Consulting */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-trailguide-neutral mb-4">Speaking & Consulting</h2>
-            <p className="text-trailguide-slate max-w-2xl mx-auto">
-              Leverage your expertise for high-value speaking engagements and strategic consulting partnerships.
+              {/* Consulting & Advisory */}
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border border-purple-200">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Consulting & Advisory</h3>
+                    <div className="text-purple-700 font-medium">$500-$2,000/hour</div>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-6">High-touch, personalized guidance for clients who need direct access to your expertise and strategic thinking.</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">1:1 strategic consulting</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Advisory board positions</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Done-with-you projects</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <span className="text-gray-700">Retainer relationships</span>
+                  </div>
+                </div>
+                <Link href="/products/consulting" className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700">
+                  Book Consultation <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        {/* Revenue Calculator */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Your Revenue Potential
+              </h2>
+              <p className="text-xl text-gray-600">
+                See how these revenue streams could work for your expertise level and audience size
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Conservative Estimates</h3>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">100 Community Members × $29</span>
+                      <span className="font-semibold text-gray-900">$2,900/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">25 Inner Circle Members × $97</span>
+                      <span className="font-semibold text-gray-900">$2,425/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">2 Course Sales × $997 (monthly)</span>
+                      <span className="font-semibold text-gray-900">$1,994/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">1 Workshop × $497 (monthly)</span>
+                      <span className="font-semibold text-gray-900">$497/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">5 Consulting Hours × $500</span>
+                      <span className="font-semibold text-gray-900">$2,500/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-4 bg-green-50 rounded-lg px-4">
+                      <span className="text-lg font-bold text-gray-900">Monthly Total:</span>
+                      <span className="text-2xl font-bold text-green-600">$10,316</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-lg font-bold text-gray-900">Annual Revenue:</span>
+                      <span className="text-2xl font-bold text-gray-900">$123,792</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Growth Projections</h3>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">250 Community Members × $29</span>
+                      <span className="font-semibold text-gray-900">$7,250/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">75 Inner Circle Members × $97</span>
+                      <span className="font-semibold text-gray-900">$7,275/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">10 Mastermind Members × $297</span>
+                      <span className="font-semibold text-gray-900">$2,970/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">5 Course Sales × $997 (monthly)</span>
+                      <span className="font-semibold text-gray-900">$4,985/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                      <span className="text-gray-700">10 Consulting Hours × $750</span>
+                      <span className="font-semibold text-gray-900">$7,500/mo</span>
+                    </div>
+                    <div className="flex justify-between items-center py-4 bg-blue-50 rounded-lg px-4">
+                      <span className="text-lg font-bold text-gray-900">Monthly Total:</span>
+                      <span className="text-2xl font-bold text-blue-600">$29,980</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-lg font-bold text-gray-900">Annual Revenue:</span>
+                      <span className="text-2xl font-bold text-gray-900">$359,760</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 mb-2">These projections assume:</p>
+                  <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-700">
+                    <span>• 10% monthly growth</span>
+                    <span>• 85% retention rate</span>
+                    <span>• Conservative conversion rates</span>
+                    <span>• Standard pricing tiers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation Support */}
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-green-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Complete Platform Implementation
+            </h2>
+            <p className="text-xl text-gray-600 mb-12">
+              Every Expert Publisher platform includes full setup, training, and ongoing support to ensure your success
             </p>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Rocket className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Platform Setup</h3>
+                <p className="text-gray-600 mb-4">Complete technical implementation of all revenue streams, payment processing, and content management systems.</p>
+                <div className="text-sm text-gray-500">
+                  ✓ Payment gateway integration<br/>
+                  ✓ Member portal configuration<br/>
+                  ✓ Course delivery system<br/>
+                  ✓ Email automation setup
+                </div>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Strategy Training</h3>
+                <p className="text-gray-600 mb-4">Comprehensive training on monetization strategies, content creation, and audience development best practices.</p>
+                <div className="text-sm text-gray-500">
+                  ✓ Pricing strategy workshops<br/>
+                  ✓ Content planning sessions<br/>
+                  ✓ Launch sequence training<br/>
+                  ✓ Growth optimization tactics
+                </div>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl shadow-lg">
+                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Crown className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Ongoing Support</h3>
+                <p className="text-gray-600 mb-4">Continuous optimization, performance monitoring, and strategic guidance to maximize your revenue potential.</p>
+                <div className="text-sm text-gray-500">
+                  ✓ Monthly performance reviews<br/>
+                  ✓ A/B testing recommendations<br/>
+                  ✓ Technical support included<br/>
+                  ✓ Strategic consulting calls
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="text-center border-2 border-trailguide-slate/20">
-              <CardHeader>
-                <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mic className="h-6 w-6 text-trailguide-evergreen" />
+      {/* Call to Action */}
+      <section className="py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Build Your Expert Publisher Platform?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Every revenue stream, system, and strategy you see here is included in your complete Expert Publisher setup. 
+              No additional development, integrations, or monthly software fees.
+            </p>
+            
+            <div className="bg-white/10 backdrop-blur rounded-2xl p-8 mb-8">
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold mb-2">$10K+</div>
+                  <div className="text-sm opacity-80">Average monthly revenue within 6 months</div>
                 </div>
-                <CardTitle>Keynote Speaking</CardTitle>
-                <CardDescription>Transform audiences with powerful presentations</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-trailguide-evergreen mb-4">$15K - $50K</div>
-                <ul className="text-sm text-trailguide-slate space-y-2 mb-6">
-                  <li>• Custom presentation development</li>
-                  <li>• Interactive audience engagement</li>
-                  <li>• Follow-up resources provided</li>
-                  <li>• Video recording rights included</li>
-                </ul>
-                <Button variant="outline" className="w-full">Book Speaking</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-2 border-trailguide-slate/20">
-              <CardHeader>
-                <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Video className="h-6 w-6 text-trailguide-evergreen" />
+                <div>
+                  <div className="text-3xl font-bold mb-2">30 Days</div>
+                  <div className="text-sm opacity-80">Complete platform setup and launch</div>
                 </div>
-                <CardTitle>Workshop Facilitation</CardTitle>
-                <CardDescription>Interactive learning experiences for teams</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-trailguide-evergreen mb-4">$25K - $75K</div>
-                <ul className="text-sm text-trailguide-slate space-y-2 mb-6">
-                  <li>• Half-day to multi-day options</li>
-                  <li>• Customized content development</li>
-                  <li>• Participant workbooks included</li>
-                  <li>• 90-day implementation support</li>
-                </ul>
-                <Button variant="outline" className="w-full">Book Workshop</Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-2 border-trailguide-slate/20">
-              <CardHeader>
-                <div className="w-12 h-12 bg-trailguide-evergreen/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="h-6 w-6 text-trailguide-evergreen" />
+                <div>
+                  <div className="text-3xl font-bold mb-2">100%</div>
+                  <div className="text-sm opacity-80">Done-for-you implementation</div>
                 </div>
-                <CardTitle>Strategic Consulting</CardTitle>
-                <CardDescription>Ongoing partnership for transformation</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-trailguide-evergreen mb-4">Custom Pricing</div>
-                <ul className="text-sm text-trailguide-slate space-y-2 mb-6">
-                  <li>• Quarterly strategic planning</li>
-                  <li>• Monthly advisory sessions</li>
-                  <li>• Team coaching and development</li>
-                  <li>• Results tracking and optimization</li>
-                </ul>
-                <Button className="w-full bg-trailguide-evergreen hover:bg-trailguide-evergreen/90">
-                  Discuss Partnership
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/trailmap" 
+                className="bg-white text-green-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+              >
+                Start Your Assessment
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <Link 
+                href="/contact" 
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-colors inline-flex items-center justify-center"
+              >
+                Schedule Strategy Call
+              </Link>
+            </div>
+            
+            <div className="mt-8 text-sm opacity-75">
+              🔒 No commitment required • Free platform assessment • Expert strategy session included
+            </div>
           </div>
-        </section>
-
-        {/* Platform Benefits */}
-        <section className="bg-trailguide-evergreen/5 rounded-3xl p-12 text-center">
-          <h2 className="text-3xl font-bold text-trailguide-neutral mb-6">
-            This Complete Stack Is Included In Your Expert Publisher Platform
-          </h2>
-          <p className="text-xl text-trailguide-slate max-w-3xl mx-auto mb-8">
-            Every feature you see demonstrated here comes ready-to-launch with your Expert Publisher setup. 
-            No additional development or integration required.
-          </p>
-          <Button asChild size="lg" className="bg-trailguide-evergreen hover:bg-trailguide-evergreen/90">
-            <Link href="/trailmap" className="flex items-center">
-              See Your Platform Assessment
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
