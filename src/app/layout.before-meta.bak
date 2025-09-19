@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Sora } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SkipLink, FocusManager } from '@/components/accessibility';
 import "./globals.css";
 
-// Feature flag for enhanced meta fonts
-const ENABLE_META_FONTS = process.env.ENABLE_META_FONTS === 'true';
-
-// Existing fonts (preserved as default)
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,20 +13,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-// Enhanced meta fonts (opt-in via feature flag)
-const inter = Inter({
-  variable: "--font-sans", // Workhorse font
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const sora = Sora({
-  variable: "--font-display", // Display font for headings
-  subsets: ["latin"],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -43,15 +25,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Build font class string based on feature flag
-  const fontClasses = ENABLE_META_FONTS 
-    ? `${inter.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable}` 
-    : `${geistSans.variable} ${geistMono.variable}`;
-
   return (
     <html lang="en">
       <body
-        className={`${fontClasses} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SkipLink />
         <FocusManager />

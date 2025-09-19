@@ -20,6 +20,7 @@ import {
   Footnotes 
 } from '@/components/mdx/table-of-contents'
 import { TemplateCallout } from '@/components/mdx/TemplateCallout'
+import { ClickableImage } from '@/components/mdx/clickable-image'
 
 // Default MDX components
 const components = {
@@ -118,8 +119,11 @@ const components = {
     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" {...props} />
   ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className="rounded-lg shadow-md my-6 max-w-full" alt="" {...props} />
+    <ClickableImage 
+      src={typeof props.src === 'string' ? props.src : ''} 
+      alt={props.alt || ''} 
+      className={props.className || ''}
+    />
   ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-8 border-gray-200" {...props} />
